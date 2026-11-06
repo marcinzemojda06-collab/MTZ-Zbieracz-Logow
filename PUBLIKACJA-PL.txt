@@ -1,0 +1,57 @@
+MTZ ZBIERACZ — MATERIAŁY DO PUBLIKACJI 0.3.0-rc.1
+
+Repozytorium: MTZ-Zbieracz-Logow
+Adres: https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow
+Wersja źródeł: 0.3.0-rc.1 (RC1)
+Status: pierwszy import źródeł; wydanie GitHub Release jeszcze nieopublikowane
+Proponowany tytuł wydania: MTZ Zbieracz logów Minecrafta 0.3.0 RC1
+Planowany tag wydania: v0.3.0-rc.1
+Typ planowanego wydania: pre-release / wersja testowa
+
+OPIS DO STRONY WYDANIA
+MTZ Zbieracz to lokalna aplikacja Windows do przygotowywania diagnostyki
+Minecraft Java i pełnych kopii instancji. Po wybraniu profilu obserwuje
+sesję gry i tworzy ZIP, który można dołączyć do zgłoszenia lub rozmowy.
+
+Wersja 0.3.0 RC1 dodaje wybór profili, bezpieczne anulowanie, wspólny
+instalator, blokadę równoczesnej aktualizacji, poprawki odtwarzania
+oraz usprawnienia opcjonalnego rozszerzenia Opery/Chromium.
+Szeroki pasek pokazuje postęp wykonanej pracy.
+
+Pobierz plik Windows, wypakuj całość i uruchom Uruchom-MTZ-Logi.cmd.
+Nie umieszczaj aplikacji w katalogu mods.
+Program nie wymaga klucza API i sam nie wysyła wiadomości.
+Domyślnie zbiera ograniczoną diagnostykę. Pełna kopia jest osobnym wyborem
+i zawiera oryginalne, nieanonimizowane pliki instancji.
+
+To kandydat do wydania. Testy kodu wykonano na Linuksie i jawnie opisano
+ich ograniczenia. Końcowe sprawdzenie Windows PowerShell 5.1, WinForms,
+skrótu i bieżącej Opery pozostaje wymagane. Wcześniejszy launcher był
+zgłaszany przez antywirusa; nie potwierdzono rozwiązania tamtego zgłoszenia.
+Nie wyłączaj ochrony w celu uruchamiania aplikacji.
+
+DOŁĄCZANE PLIKI
+- MTZ-Zbieracz-Logow-Windows-0.3.0-rc.1.zip
+- MTZ-Zbieracz-Logow-Zrodla-0.3.0-rc.1.zip
+- MTZ-Zbieracz-Logow-Weryfikacja-0.3.0-rc.1.txt
+
+KOLEJNOŚĆ
+1. Sprawdź kandydata na Windows według WERYFIKACJA-PL.txt.
+2. Sprawdź, czy źródła i LICENSE.txt w repozytorium odpowiadają przygotowywanemu wydaniu.
+3. W Releases utwórz szkic i wybierz tag v0.3.0-rc.1.
+4. Dołącz trzy pliki wydania i opis.
+5. Zaznacz, że jest to pre-release.
+6. Sprawdź materiały i dopiero opublikuj wydanie.
+7. Udostępnij rzeczywisty adres utworzonego wydania.
+
+Nie dołączaj do repozytorium katalogu %LOCALAPPDATA%\MTZ-Logi ani paczek
+zebranych z gry. Dystrybucja aplikacji nie wymaga logów, konfiguracji,
+światów ani danych kont użytkownika.
+
+Repozytorium projektu zostało utworzone. Ten dokument przygotowuje
+osobne wydanie GitHub Release wersji 0.3.0-rc.1, którego jeszcze
+nie opublikowano. Publikację poprzedza końcowe sprawdzenie na Windows
+opisane w WERYFIKACJA-PL.txt.
+Dokumentacja GitHub:
+https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+https://docs.github.com/en/repositories/releasing-projects-on-github/linking-to-releases

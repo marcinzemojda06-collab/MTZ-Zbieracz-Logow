@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "MTZ — dołączanie logów Minecrafta",
+  "version": "0.1.1",
+  "description": "Dołącza przygotowany przez zbieracz MTZ plik ZIP do wskazanej rozmowy ChatGPT. Wysłanie wiadomości pozostaje po Twojej stronie.",
+  "minimum_chrome_version": "109",
+  "host_permissions": ["http://127.0.0.1:17643/*"],
+  "background": {"service_worker": "service-worker.js"},
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["common.js", "content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}

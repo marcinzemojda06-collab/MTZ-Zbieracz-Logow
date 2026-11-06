@@ -1,0 +1,164 @@
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA
+0.3.0-rc.1 • Windows 10/11 • 6 listopada 2026
+
+DO CZEGO SŁUŻY
+Program obserwuje wybraną instancję Minecraft Java i po zakończeniu sesji
+przygotowuje lokalną paczkę do diagnostyki albo pełną kopię plików.
+Można też rozpocząć zbieranie ręcznie. Zbieracz jest osobną aplikacją,
+a nie modem: nie umieszczaj go w katalogu mods.
+
+Status: kandydat do wydania. Testy wykonane i brakujące opisuje
+WERYFIKACJA-PL.txt. Instrukcja skrócona jest w START-TUTAJ.txt.
+
+1. INSTALACJA I AKTUALIZACJA
+Wypakuj cały ZIP. Zamknij poprzednio uruchomiony zbieracz.
+Uruchom Uruchom-MTZ-Logi.cmd bez uprawnień administratora.
+Obydwa pliki CMD oraz Instaluj-MTZ-Logi.ps1 korzystają ze wspólnego,
+jawnego skryptu Launch-MTZ.ps1. Wszystkie muszą pozostać w jednym folderze.
+
+Aplikacja jest instalowana w:
+  %LOCALAPPDATA%\MTZ-Logi\Aplikacja
+Skrót na pulpicie ma nazwę MTZ - Zbieracz logow.
+Program używa systemowego Windows PowerShell 5.1 i Windows Forms.
+Nie potrzebuje dodatkowej instalacji Javy do samego zbierania logów.
+Krótko może pojawić się okno konsoli podczas uruchamiania CMD.
+
+Aktualizacja przygotowuje nową kopię programu i sprawdza skrypty przed
+podmianą. Poprzedni folder programu trafia do Kopie-aplikacji.
+Ustawienia i archiwa pozostają poza podmienianym folderem.
+Nie uruchamiaj dwóch instalatorów równocześnie. Zbieracz i instalator
+sprawdzają blokady, aby nie podmienić programu podczas jego pracy.
+
+Ta paczka nie jest podpisanym instalatorem EXE.
+Wcześniejszy launcher był zgłaszany przez antywirusa użytkownika.
+Obecne zmiany nie są dowodem usunięcia tamtego wykrycia. Jeżeli ochrona
+zablokuje plik, pozostaw ją włączoną i zapisz dokładny komunikat oraz
+nazwę pliku do weryfikacji. Nie dodawaj automatycznie wyjątków.
+
+2. WYBÓR INSTANCJI
+Wykryj profile sprawdza standardowy katalog profili CurseForge bieżącego
+użytkownika oraz katalog .minecraft w danych aplikacji.
+Program pokazuje listę; nie wybiera automatycznie znalezionego świata.
+Nie skanuje całych dysków ani plików kont launchera.
+
+Jeżeli profil ma niestandardową lokalizację, kliknij Wybierz folder.
+W launcherze można użyć Otwórz folder przy profilu, a następnie wskazać
+ten sam katalog w zbieraczu. Folder powinien zawierać logs lub mods.
+Prism Launcher, MultiMC i inne niestandardowe instalacje wskaż ręcznie.
+
+Zbieracz pamięta poprawnie wybraną instancję. Po aktualizacji nie
+zastępuje jej innym folderem. Niedostępny lub przeniesiony profil trzeba
+wskazać ponownie. Program nie zawiera ścieżki do komputera autora.
+
+3. CODZIENNE UŻYCIE
+- Otwórz zbieracz i wybierz profil oraz zakres.
+- Pozostaw okno otwarte i uruchom grę swoim launcherem.
+- Po zakończeniu wykrytej sesji program przygotuje paczkę.
+- Jeżeli sesja nie zostanie rozpoznana, kliknij Przygotuj paczkę.
+- Zaczekaj na zakończenie. Wybierz część z listy Gotowe części.
+- Kliknij Pokaż wybrany ZIP, aby otworzyć Eksplorator i zaznaczyć plik.
+- Przeciągnij ZIP do rozmowy lub zgłoszenia i sprawdź, czy został dodany.
+
+Adres ChatGPT nie jest wymagany do zbierania ani pokazania plików.
+Przycisk Nowa sesja rozpoczyna nową obserwację tego samego profilu.
+Program nie dodaje się do autostartu Windows.
+
+4. ZAKRES PACZKI
+SZYBKA DIAGNOSTYKA jest domyślna dla nowych użytkowników:
+  - końcówka latest.log, do 8 MiB;
+  - końcówka debug.log, do 8 MiB;
+  - do trzech raportów awarii;
+  - lista plików modów i manifest.
+Łączny limit odczytu logów wynosi 24 MiB.
+Tryb nie kopiuje całych JAR-ów, światów ani katalogu config.
+Rozpoznane dane prywatne w tekście są maskowane.
+Można przygotować taką paczkę także podczas gry.
+
+PEŁNA kopia jest osobnym wyborem. Poprzednio zapisany wybór tego trybu
+jest zachowany podczas aktualizacji.
+Zawiera osobny filtrowany ZIP diagnostyczny oraz oryginalne pliki z
+rozpoznanych katalogów instancji: mody, logi, konfiguracje, datapacki,
+skrypty, zasoby, shadery, światy, ich wymiary i dane graczy.
+Zakres, pominięcia i sumy kontrolne opisuje full-manifest.json.
+Pliki kont i tożsamości launchera są wyłączane.
+
+Pełne pliki są kopiowane bez modyfikacji bajtów i nie są anonimizowane.
+Przygotowuj pełną kopię po zamknięciu Minecrafta.
+Jeśli plik zmieni się podczas kopiowania albo gra zostanie ponownie
+uruchomiona, wynik może być oznaczony jako niepełny. Przeczytaj Uwagi
+i przygotuj nową kopię przy zamkniętej grze.
+Szczegóły prywatności: PRYWATNOSC-PL.txt.
+
+5. PASEK POSTĘPU, ANULOWANIE I BŁĘDY
+Szeroki pasek pokazuje procent wykonanej pracy: przygotowanie danych,
+odczyt, kompresję, zapis i weryfikację części. To nie prognoza czasu.
+Zliczanie danych może chwilowo pozostawić procent bez zmiany.
+100% pojawia się dopiero po zakończeniu procesu i sprawdzeniu ZIP-ów.
+Wynik niepełny, anulowany albo błędny ma osobny komunikat.
+
+Anuluj wysyła żądanie zatrzymania. Proces kończy bieżący odczyt
+i porządkuje tylko artefakty tej próby.
+Oryginalna instancja i wcześniejsze paczki pozostają zachowane.
+Przy bardzo wolnym lub zablokowanym nośniku anulowanie może potrwać.
+Jeżeli sprzątanie się nie powiedzie, sprawdź wyświetlone uwagi.
+
+Zamknięcie okna podczas pakowania pozwala zlecić anulowanie i zamknąć
+program po zakończeniu porządkowania.
+Awaria systemu lub wymuszone zakończenie procesu może pozostawić pliki
+robocze. Nie traktuj ich jako kompletnej kopii; przygotuj nową paczkę.
+
+6. CZĘŚCI ZIP I ODTWARZANIE
+Pełne dane są dzielone na zwykłe ZIP-y o rozmiarze około 24 MiB.
+To nie wieloczęściowy format .z01. Pojedynczy duży plik może zostać
+podzielony na fragmenty znajdujące się w kilku ZIP-ach.
+Samo wypakowanie wszystkich ZIP-ów nie składa takich plików.
+
+Zachowaj cały podfolder jednej sesji, z manifestem, częściami
+i Restore-MTZ-Paczka.ps1.
+Skrypt odtwarza kopię do nowego albo pustego folderu:
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\Paczka\Restore-MTZ-Paczka.ps1" -SourceDirectory "D:\Paczka" -DestinationDirectory "D:\Odtworzona-instancja"
+Podstaw własne ścieżki. Wybierz miejsce z odpowiednią ilością wolnej przestrzeni.
+
+Odtwarzanie sprawdza komplet części, ścieżki, rozmiary i SHA256.
+Dane są składane w osobnym katalogu roboczym obok miejsca docelowego;
+folder wynikowy zostaje opublikowany po udanej weryfikacji.
+Istniejący niepusty katalog nie jest nadpisywany.
+Niekompletne paczki są domyślnie odrzucane.
+
+7. OPCJONALNE PRZEKAZYWANIE DO CHATGPT
+Bez rozszerzenia: Pokaż wybrany ZIP → przeciągnij plik do rozmowy.
+Z rozszerzeniem:
+  a. Zainstaluj je według rozszerzenie/README-PL.txt.
+  b. Podaj adres istniejącej rozmowy https://chatgpt.com/c/...
+  c. Wybierz ZIP i kliknij Przekaż wybraną do ChatGPT.
+  d. Pozostaw okno zbieracza otwarte.
+  e. Sprawdź, czy plik został dodany i czy strona zaakceptowała załącznik.
+  f. Wiadomość wyślij samodzielnie przyciskiem Wyślij.
+
+Link działa przez 15 minut i dotyczy jednego pliku do 30 MiB.
+Zmiana wybranej części unieważnia poprzedni dostęp.
+Odbiór ZIP-a z lokalnego mostu nie dowodzi, że ChatGPT zakończył
+dodawanie załącznika. Gdy próba się nie uda, dołącz plik ręcznie.
+Rozszerzenie nie wymaga klucza API i nie klika Wyślij.
+
+8. FOLDERY I DIAGNOSTYKA APLIKACJI — WIN + R
+Aplikacja:
+  %LOCALAPPDATA%\MTZ-Logi\Aplikacja
+Gotowe paczki:
+  %LOCALAPPDATA%\MTZ-Logi\Paczki
+Ustawienia:
+  notepad.exe "%LOCALAPPDATA%\MTZ-Logi\ustawienia.json"
+Błąd instalacji, jeśli wystąpił:
+  notepad.exe "%LOCALAPPDATA%\MTZ-Logi\blad-instalacji.txt"
+Błąd uruchomienia, jeśli wystąpił:
+  notepad.exe "%LOCALAPPDATA%\MTZ-Logi\blad-uruchomienia.txt"
+
+Paczki nie są automatycznie kasowane. Możesz usuwać swoje niepotrzebne
+archiwa w Eksploratorze. Zachowaj komplet części kopii, którą chcesz odtworzyć.
+
+9. LICENCJA I PUBLIKACJA
+Kod programu jest dostarczany na warunkach MIT z pliku LICENSE.txt.
+Wydanie aplikacji zawiera sam program, dokumentację i opcjonalne rozszerzenie.
+Archiwa z grą tworzone przez zbieracz są osobnymi danymi użytkownika.
+Przed oznaczeniem wersji jako stabilnej 1.0 trzeba zakończyć kontrolę
+na Windows opisaną w WERYFIKACJA-PL.txt.

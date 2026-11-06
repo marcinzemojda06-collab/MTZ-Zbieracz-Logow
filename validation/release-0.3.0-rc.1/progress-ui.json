@@ -1,0 +1,242 @@
+{
+  "Version": "0.3.0-rc.1",
+  "Suite": "UI",
+  "Runtime": "7.4.13",
+  "Platform": "Unix",
+  "Cases": 21,
+  "PassedCases": 21,
+  "FailedCases": 0,
+  "Assertions": 121,
+  "NativePowerShellExecuted": true,
+  "NativeArchiveAndWorkerOperations": false,
+  "UiStateUsesExplicitFakeControls": true,
+  "WindowsFormsRendered": false,
+  "WindowsPowerShell51Executed": false,
+  "InputSha256": {
+    "MTZ-Logi.ps1": "d22d0e43fe827856d3b30cfb4129616fa7d05d18da6ed3b15a0de9bda8d4cb04",
+    "core.ps1": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815",
+    "full-bundle.ps1": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314",
+    "Collect-Worker.ps1": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7",
+    "session.ps1": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53",
+    "Restore-MTZ-Paczka.ps1": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4",
+    "bridge/Bridge.cs": "f402be48783a2c0c1e13f6f12ec49834b4a622fcab4d068052a6b1464297d95a"
+  },
+  "SourceFilesChangedDuringTests": [],
+  "Results": [
+    {
+      "Name": "New and legacy settings preserve explicit choices and default to Diagnostics",
+      "Status": "PASS",
+      "Assertions": 14,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "InvalidModeTypesRejected": true,
+        "NewUserScope": "Diagnostics",
+        "ExistingFullPreserved": true
+      }
+    },
+    {
+      "Name": "Invalid or oversized settings return a clear warning and safe defaults",
+      "Status": "PASS",
+      "Assertions": 8,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Saving preferences roundtrips Full and allows clearing the remembered conversation",
+      "Status": "PASS",
+      "Assertions": 4,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Profile discovery only returns valid immediate known launcher locations",
+      "Status": "PASS",
+      "Assertions": 3,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "NoAutomaticSelection": true,
+        "NestedAndUnrelatedExcluded": true,
+        "SymlinkFixtureSupported": true,
+        "ReturnedProfiles": 3
+      }
+    },
+    {
+      "Name": "Profile discovery is capped at 200 immediate CurseForge candidates",
+      "Status": "PASS",
+      "Assertions": 1,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ReturnedProfiles": 200,
+        "AvailableProfiles": 205
+      }
+    },
+    {
+      "Name": "Application lock excludes another process and can be reacquired after release",
+      "Status": "PASS",
+      "Assertions": 4,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ReacquisitionAfterDispose": true,
+        "RealCrossProcessContention": true
+      }
+    },
+    {
+      "Name": "Cancellation request preserves progress, source files and prior archives",
+      "Status": "PASS",
+      "Assertions": 5,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Canceled worker is neither success nor error and leaves prior packages intact",
+      "Status": "PASS",
+      "Assertions": 5,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ErrorDialogs": 0,
+        "DisplayedPercent": 62,
+        "WorkerExit": 3,
+        "PreviousZipPreserved": true
+      }
+    },
+    {
+      "Name": "Malformed or contradictory cancellation results are rejected as protocol errors",
+      "Status": "PASS",
+      "Assertions": 8,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "A successful worker result wins a late cancellation request without discarding a good ZIP",
+      "Status": "PASS",
+      "Assertions": 2,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Window close asks once and waits asynchronously for canceled worker cleanup",
+      "Status": "PASS",
+      "Assertions": 6,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ConfirmationCalls": 2,
+        "FinalPercent": 48,
+        "ForcedKillCalls": 0,
+        "FakeFormAndConfirmation": true,
+        "BlockingWaitCalls": 0
+      }
+    },
+    {
+      "Name": "Failed cancellation request leaves the window open and reports the problem",
+      "Status": "PASS",
+      "Assertions": 2,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Snapshot rejects missing, malformed, truncated, oversized and invalid UTF8 data",
+      "Status": "PASS",
+      "Assertions": 10,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "RejectedVariants": 10
+      }
+    },
+    {
+      "Name": "Snapshot protocol rejects old sequences, unsupported version and percent100",
+      "Status": "PASS",
+      "Assertions": 12,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Actual display state stays monotonic and ignores stale or unavailable snapshots",
+      "Status": "PASS",
+      "Assertions": 5,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ObservedValues": [
+          70,
+          70,
+          70,
+          70,
+          0
+        ],
+        "FakeControls": true
+      }
+    },
+    {
+      "Name": "New attempt resets old100 and part selection before preflight failure",
+      "Status": "PASS",
+      "Assertions": 3,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Archive readiness accepts closed ZIP and rejects arbitrary, truncated and empty ZIPs",
+      "Status": "PASS",
+      "Assertions": 4,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Successful completion alone enables100 and preserves multiple selectable archives",
+      "Status": "PASS",
+      "Assertions": 6,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "FakeControls": true,
+        "ActualExitedSubprocess": true,
+        "SelectedPart": 2,
+        "Percent": 100,
+        "Archives": 2
+      }
+    },
+    {
+      "Name": "Error results, nonzero exit, missing result and malformed result never display100",
+      "Status": "PASS",
+      "Assertions": 12,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ActualExitedSubprocesses": true,
+        "MaximumDisplayedPercent": 99,
+        "RejectedResults": 6
+      }
+    },
+    {
+      "Name": "Bad ZIP content never enables100 despite successful worker result and exit0",
+      "Status": "PASS",
+      "Assertions": 2,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    },
+    {
+      "Name": "Incomplete capture and game restart keep reviewable parts but never display100",
+      "Status": "PASS",
+      "Assertions": 5,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {}
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "release": "0.3.0-rc.1",
+  "scope": "Independent review of MTZ-Logi.ps1; new adapted progress/state tests only, no production edits by this agent.",
+  "regressions_found_and_fixed_by_root": [
+    "Canceled result used coercive equality and bypassed success/exit-code validation. Now bool types and Success=false / exit3 are required.",
+    "A JSON string root could pass the loose PSCustomObject check. Preferences now require a raw JSON object and exact parsed object type; arrays/scalars are rejected."
+  ],
+  "coverage": [
+    "Diagnostics defaults for new users; legacy Full, valid profile and conversation preserved.",
+    "Clearing a remembered conversation persists; invalid edit does not replace a valid URL.",
+    "Known immediate launcher directories only, no automatic profile selection, cap200, linked and nested fixtures excluded.",
+    "Real separate-process application-lock contention and reacquisition after release.",
+    "Cancel never invents100 or displays an error for a valid cancellation; malformed cancellation JSON is rejected.",
+    "Close confirmation and cleanup run asynchronously, no WaitForExit/Kill in the normal close path.",
+    "Real pre-canceled workers and Full cancellation during observed large-file copy return exit3; source and earlier packages survive.",
+    "Existing byte-progress, bad/partial ZIP, failure, multipart selection and exact restoration regression cases retained."
+  ],
+  "results": [
+    {
+      "report": "progress-ui.json",
+      "cases": 21,
+      "passed": 21,
+      "failed": 0,
+      "assertions": 121,
+      "source_mismatches_now": [],
+      "source_changed_during_run": []
+    },
+    {
+      "report": "progress-engine.json",
+      "cases": 10,
+      "passed": 10,
+      "failed": 0,
+      "assertions": 477,
+      "source_mismatches_now": [],
+      "source_changed_during_run": []
+    }
+  ],
+  "test_sha256": "68c3a9b2e7eefc341cea6faeb24147026b4244dd905deb61159b640db8702ecb",
+  "runtime": "PowerShell 7.4.13 on Linux",
+  "windows_forms_rendered": false,
+  "windows_powershell_5_1_executed": false,
+  "visual_confirmation_is_test_stub": true,
+  "note": "Test cases execute production functions and event branches. Fake controls and a stub for the single visual MessageBox confirmation do not prove Windows layout or native UI behavior."
+}

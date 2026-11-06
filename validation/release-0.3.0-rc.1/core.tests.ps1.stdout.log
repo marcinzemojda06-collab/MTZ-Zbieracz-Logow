@@ -1,0 +1,24 @@
+PASS instance validates selected root only
+PASS traversal and absolute children rejected
+PASS empty instance produces no diagnostic success
+PASS fingerprint detects append and truncation
+PASS fingerprint detects same-size rewrite
+PASS live writer permits bounded snapshot
+PASS bounded tail drops partial first line
+PASS bounded huge single line is omitted
+PASS invalid UTF8 does not crash reader
+PASS redaction removes command line and structured tokens
+PASS redaction handles actual ModLauncher comma-separated arguments
+PASS redaction handles auth cookies session fields and URLs
+PASS redaction removes private paths and player aliases
+PASS redaction preserves diagnostics registry IDs versions and line numbers
+PASS redaction preserves suffixed filenames mod tables and JVM versions
+PASS redaction keeps Polish diagnostic text
+PASS output inside selected instance rejected
+PASS recent crash reports limited to three safe names
+PASS ZIP allowlist manifest and inventory roundtrip
+PASS source timestamps and stale-session provenance are explicit
+PASS empty and singleton inventory stays JSON array
+PASS combined source-byte cap enforced
+PASS symbolic link escape rejected when supported
+RESULT passed=23 failed=0 skipped=0

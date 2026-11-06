@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": 47,
+  "runtime": "7.4.13",
+  "platform": "Unix",
+  "actualWindowsRun": false,
+  "actualCimProcessQuery": false,
+  "scope": "Real pure session state and Windows argument parser; CIM query uses fixtures, no user process arguments collected.",
+  "sessionSha256": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53"
+}

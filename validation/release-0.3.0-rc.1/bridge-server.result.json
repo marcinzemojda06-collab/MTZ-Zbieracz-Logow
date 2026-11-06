@@ -1,0 +1,16 @@
+{
+  "suite": "bridge-server",
+  "exitCode": 0,
+  "passed": 45,
+  "expected": 45,
+  "duration_seconds": 6.971,
+  "platform": "Linux",
+  "native_windows_tested": false,
+  "live_opera_chatgpt_tested": false,
+  "command": [
+    "/workspace/scratch/8fdcd5ba405f/collector-work-2026-11-06/runtime/powershell-7.4.13/pwsh",
+    "-NoProfile",
+    "-File",
+    "bridge/Test-Bridge.ps1"
+  ]
+}

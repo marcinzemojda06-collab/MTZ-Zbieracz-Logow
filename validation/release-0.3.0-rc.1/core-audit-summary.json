@@ -1,0 +1,48 @@
+{
+  "version": "0.3.0-rc.1",
+  "scope": [
+    "core.ps1",
+    "full-bundle.ps1",
+    "Collect-Worker.ps1"
+  ],
+  "changes": [
+    "Cooperative cancel.request -> Canceled=true, Success=false, Bundle=null, exit3; checkpoints between files and1MiB blocks.",
+    "Failed and canceled attempts remove only their owned temporary/published artifacts. Cleanup refusal is surfaced in bounded Warnings.",
+    "Destination archive errors abort the job instead of being mislabeled as skipped source files.",
+    "Redaction now covers JSON-escaped selected paths, Windows profile names with spaces, and raw/quoted auth headers.",
+    "Ordinal relative path ordering fixes nondeterministic file/chunk numbering; session identifiers and timestamps remain unique.",
+    "Worker checks ZIP central-directory readability and required manifest entry after writing; no full rehash claim."
+  ],
+  "protocol": {
+    "cancelFile": "<job>/cancel.request",
+    "successMaximumWorkerPercent": 99,
+    "canceledExitCode": 3,
+    "resultKeys": [
+      "Success",
+      "Canceled",
+      "Error",
+      "Warnings",
+      "Bundle"
+    ]
+  },
+  "verification": {
+    "coreRegressionTests": 23,
+    "coreFailed": 0,
+    "fullBundleIntegrationAssertions": 120,
+    "releaseCoreScenarios": 13,
+    "releaseCoreAssertions": 54,
+    "allFinalRunsExitCode": 0,
+    "allFinalRunsSourcesUnchanged": true,
+    "parserErrors": 0,
+    "utf8BomPreserved": true,
+    "runtime": "PowerShell7.4.13 / Linux",
+    "nativeWindowsGuiValidated": false,
+    "nativeWindowsPowerShell51Validated": false
+  },
+  "sha256": {
+    "core.ps1": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815",
+    "full-bundle.ps1": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314",
+    "Collect-Worker.ps1": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7",
+    "Restore-MTZ-Paczka.ps1": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4"
+  }
+}

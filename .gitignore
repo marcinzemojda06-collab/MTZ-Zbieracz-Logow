@@ -1,0 +1,8 @@
+dist/
+node_modules/
+__pycache__/
+*.pyc
+Paczki/
+Zadania/
+ustawienia.json
+*.lock

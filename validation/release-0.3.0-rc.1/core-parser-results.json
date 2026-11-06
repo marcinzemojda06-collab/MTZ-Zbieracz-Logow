@@ -1,0 +1,30 @@
+{
+  "parserRuntime": "PowerShell7.4.13Linux",
+  "nativePowerShell51NotRun": true,
+  "files": [
+    {
+      "file": "core.ps1",
+      "utf8Bom": true,
+      "parserErrors": [],
+      "sha256": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815"
+    },
+    {
+      "file": "full-bundle.ps1",
+      "utf8Bom": true,
+      "parserErrors": [],
+      "sha256": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314"
+    },
+    {
+      "file": "Collect-Worker.ps1",
+      "utf8Bom": true,
+      "parserErrors": [],
+      "sha256": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7"
+    },
+    {
+      "file": "validation/release-0.3.0-rc.1/Test-Release-Core.ps1",
+      "utf8Bom": true,
+      "parserErrors": [],
+      "sha256": "71286cf0881beca5e515e07e67992f669f078fd1e56ccb89b2c2326afb1722ab"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+PASS Windows profile names with spaces and escaped JSON paths are redacted
+PASS Raw and JSON authentication headers redact non-Bearer schemes
+PASS Inventory numbering uses stable ordinal relative path order
+PASS A cancellation before starting creates no archive
+PASS Diagnostic cancellation during compression closes and removes the partial file
+PASS Full cancellation during enumeration removes the preliminary diagnostic ZIP
+PASS Full cancellation inside a file preserves original files and earlier packages
+PASS Cancellation after publishing a part removes this attempt final ZIPs too
+PASS Destination write failure is fatal rather than a source skip
+PASS Metadata finalization failure removes the current job files
+PASS Cleanup refusal is propagated as a warning without deleting unrelated paths
+PASS Worker observes cancel.request and returns a separate canceled result
+PASS Diagnostic worker succeeds with an inspected ZIP and stays below GUI completion
+RESULT release core: 13/13 tests, 54 assertions

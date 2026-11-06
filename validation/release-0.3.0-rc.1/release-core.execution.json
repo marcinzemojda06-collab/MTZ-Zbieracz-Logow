@@ -1,0 +1,15 @@
+{
+  "test": "validation/release-0.3.0-rc.1/Test-Release-Core.ps1",
+  "exitCode": 0,
+  "seconds": 9.038,
+  "runtime": "PowerShell 7.4.13 / Linux",
+  "nativeWindowsValidated": false,
+  "sourceHashes": {
+    "core.ps1": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815",
+    "full-bundle.ps1": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314",
+    "Collect-Worker.ps1": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7",
+    "Restore-MTZ-Paczka.ps1": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4",
+    "validation/release-0.3.0-rc.1/Test-Release-Core.ps1": "71286cf0881beca5e515e07e67992f669f078fd1e56ccb89b2c2326afb1722ab"
+  },
+  "sourcesUnchangedDuringTest": true
+}

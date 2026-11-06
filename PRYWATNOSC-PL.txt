@@ -1,0 +1,54 @@
+MTZ — ZBIERACZ LOGÓW MINECRAFTA
+Zakres danych w wersji 0.3.0-rc.1
+
+ZBIERANIE LOKALNE
+Zbieracz pracuje na wybranej instancji Minecrafta i zapisuje archiwa na
+Twoim komputerze. Nie wymaga konta w zbieraczu ani klucza API. Nie ma
+telemetrii, reklam ani automatycznego wysyłania paczek przez Internet.
+Otwieranie rozmowy i przekazywanie ZIP-a zaczynają się po Twoim kliknięciu.
+
+SZYBKA DIAGNOSTYKA — DOMYŚLNA DLA NOWEJ INSTALACJI
+Obejmuje końcówki latest.log i debug.log, do trzech raportów awarii,
+listę plików modów oraz manifest opisujący zbieranie.
+Nie zawiera całych JAR-ów, światów ani katalogu konfiguracji.
+Filtr maskuje rozpoznane tokeny, dane sesji, hasła, adresy i ścieżki.
+Rozszerzona redakcja obejmuje też nagłówki uwierzytelniania i zapisane
+w JSON ścieżki Windows. Nietypowy wpis może pozostać nierozpoznany:
+przed udostępnieniem możesz otworzyć ZIP i sprawdzić zawartość.
+
+PEŁNA KOPIA — OSOBNY WYBÓR
+Zawiera oryginalne pliki wybranych katalogów instancji, w tym mody,
+konfiguracje, logi, światy, dane graczy i ustawienia serwerów.
+Pliki są zachowywane bez zmiany bajtów, więc ta część NIE jest anonimizowana.
+Filtr logów dotyczy tylko osobnego ZIP-a diagnostycznego.
+Rozpoznane pliki kont i tożsamości launchera są wyłączane.
+Pominięcia i zmiany plików są opisane w full-manifest.json.
+Taka kopia służy do odtwarzania lub szczegółowej analizy; przed przekazaniem
+innym sprawdź zakres i zawartość.
+
+PROCESY I USTAWIENIA
+Wykrywanie sesji porównuje polecenie procesu Minecraft Java z dokładną
+ścieżką wybranej instancji. Polecenia procesów nie są zapisywane w paczce.
+Aplikacja pamięta wybrany folder, tryb oraz opcjonalny adres rozmowy.
+Usunięcie adresu rozmowy z pola czyści także zapamiętany adres.
+Paczki nie są automatycznie usuwane.
+
+OPCJONALNE ROZSZERZENIE
+Przycisk przekazania udostępnia migawkę jednego wybranego ZIP-a przez
+127.0.0.1:17643. Dostęp wymaga losowego kodu ważnego przez 15 minut.
+Zmiana wybranego pliku lub zamknięcie programu unieważnia dostęp.
+Nie udostępnia ogólnego dostępu do folderów komputera.
+Rozszerzenie działa na chatgpt.com, nie odczytuje cookies ani danych konta.
+Próbuje dodać plik do wskazanej rozmowy, nie klika Wyślij i nie zmienia
+treści szkicu. Samo dołączenie pliku w przeglądarce może już przesyłać
+jego zawartość do usługi ChatGPT; wysłanie wiadomości jest osobnym krokiem.
+Bez rozszerzenia możesz ręcznie przeciągnąć plik.
+
+LOKALIZACJE — MOŻNA WKLEIĆ DO WIN + R
+%LOCALAPPDATA%\MTZ-Logi\Paczki
+%LOCALAPPDATA%\MTZ-Logi\ustawienia.json
+%LOCALAPPDATA%\MTZ-Logi\Aplikacja
+
+Paczka dystrybucyjna programu nie zawiera Twoich logów, konfiguracji,
+światów ani danych konta. To oddzielny plik od archiwów tworzonych
+później przez aplikację.

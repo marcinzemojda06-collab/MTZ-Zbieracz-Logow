@@ -1,0 +1,22 @@
+PASS New and legacy settings preserve explicit choices and default to Diagnostics
+PASS Invalid or oversized settings return a clear warning and safe defaults
+PASS Saving preferences roundtrips Full and allows clearing the remembered conversation
+PASS Profile discovery only returns valid immediate known launcher locations
+PASS Profile discovery is capped at 200 immediate CurseForge candidates
+PASS Application lock excludes another process and can be reacquired after release
+PASS Cancellation request preserves progress, source files and prior archives
+PASS Canceled worker is neither success nor error and leaves prior packages intact
+PASS Malformed or contradictory cancellation results are rejected as protocol errors
+PASS A successful worker result wins a late cancellation request without discarding a good ZIP
+PASS Window close asks once and waits asynchronously for canceled worker cleanup
+PASS Failed cancellation request leaves the window open and reports the problem
+PASS Snapshot rejects missing, malformed, truncated, oversized and invalid UTF8 data
+PASS Snapshot protocol rejects old sequences, unsupported version and percent100
+PASS Actual display state stays monotonic and ignores stale or unavailable snapshots
+PASS New attempt resets old100 and part selection before preflight failure
+PASS Archive readiness accepts closed ZIP and rejects arbitrary, truncated and empty ZIPs
+PASS Successful completion alone enables100 and preserves multiple selectable archives
+PASS Error results, nonzero exit, missing result and malformed result never display100
+PASS Bad ZIP content never enables100 despite successful worker result and exit0
+PASS Incomplete capture and game restart keep reviewable parts but never display100
+RESULT cases=21 passed=21 failed=0 assertions=121

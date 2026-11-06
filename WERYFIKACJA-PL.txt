@@ -1,0 +1,81 @@
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA 0.3.0-rc.1
+Weryfikacja kandydata do wydania • 6 listopada 2026
+
+WYNIK
+Wszystkie niżej wymienione zestawy automatyczne zakończyły się powodzeniem.
+Zestawy wykonano na aktualnych plikach produkcyjnych. Sumy SHA-256
+porównano ponownie przed spakowaniem.
+Nie jest to potwierdzenie pełnego działania na Windows.
+
+WYKONANE TESTY
+- Diagnostyka i filtrowanie tekstu: 23/23 testy.
+- Pełne kopie i integracja z odtwarzaniem: 120 sprawdzeń.
+- Nowe scenariusze anulowania, błędów zapisu i sprzątania: 13/13,
+  obejmujące 54 sprawdzenia.
+- Launcher i instalator: 55/55 sprawdzeń.
+- Stan sesji i rozpoznawanie argumentów procesu: 47/47 sprawdzeń.
+- Odtwarzanie, uszkodzone manifesty i sumy kontrolne: 57/57 sprawdzeń.
+- Lokalny most HTTP — kompilacja C# i rzeczywiste połączenia TCP: 45/45.
+- Logika rozszerzenia: 22/22.
+- Formularz i wyścigi asynchroniczne rozszerzenia: 15/15.
+- Logika GUI: 21/21 przypadków, 121 sprawdzeń.
+- Postęp oraz rzeczywiste procesy pakowania: 10/10 przypadków,
+  477 sprawdzeń.
+
+Przypadki i pojedyncze asercje są różnymi jednostkami.
+Nie należy sumować tych liczb jako niezależnych testów użytkownika.
+
+CO POTWIERDZONO
+- Szeroki pasek pokazuje wykonaną pracę; 100% wymaga poprawnego wyniku.
+- Anulowanie pełnej kopii z plikiem 32 MiB nastąpiło w trakcie etapu
+  Kopiowanie i kompresja, przy 19%. Proces zakończył się kodem3.
+  Jego części usunięto, oryginał i wcześniejsza paczka pozostały.
+- Niepoprawne i niepełne archiwa nie otrzymują pozornego pełnego sukcesu.
+- Sprzeczny lub błędnie zapisany wynik anulowania jest odrzucany.
+- Błąd usuwania pozostałości jest przekazywany w uwagach.
+- Nowa instalacja wybiera Diagnostics, stary wybór Full jest zachowany.
+- Usunięcie adresu rozmowy jest zapamiętywane.
+- Wykrywanie profili nie skanuje całego dysku i nie wybiera profilu samo.
+- Blokadę aplikacji sprawdzono także pomiędzy dwoma prawdziwymi procesami.
+- Aktualizacja zachowuje ustawienia i archiwa; błąd nie udaje sukcesu.
+- Błędna kopia nie pozostawia częściowo odtworzonego folderu docelowego.
+- Niepoprawne nagłówki HTTP i niepełna odpowiedź ZIP są odrzucane.
+- Zmiana rozmowy lub zamknięcie panelu nie dołącza pliku do innej rozmowy.
+- Rozszerzenie nie wysyła wiadomości i nie zmienia istniejącego szkicu.
+
+ŚRODOWISKO I GRANICE
+PowerShell7.4.13 na Linuksie; Node24.22.1; jsdom30.1.3.
+Operacje na ZIP-ach, haszowanie, pliki, blokady i procesy PowerShell
+były rzeczywiste. Kontrolki WinForms, potwierdzenia dialogu, COM skrótu,
+uruchamianie Windows GUI i dane CIM były zastąpione jawnymi atrapami.
+Atrapy testują logikę; nie renderują aplikacji Windows.
+Nie wykonano testu w zalogowanej Operze ani skanu używanym antywirusem.
+Brak podpisu cyfrowego i weryfikacji SmartScreen nie jest zastąpiony
+sumą SHA-256 — suma pozwala rozpoznać konkretny plik.
+
+PRZED OZNACZENIEM WYDANIA JAKO STABILNE
+1. Windows PowerShell5.1: pierwsza instalacja i aktualizacja, uruchomienie
+   przez rzeczywisty skrót, zachowane ustawienia i archiwa.
+2. Okno Windows: czytelność przy używanym skalowaniu ekranu, przyciski,
+   wybór profilu, procent postępu, Anuluj i zamykanie podczas pracy.
+3. Sesja Minecrafta: zakończenie gry i automatyczna diagnostyka z właściwego
+   profilu. Sprawdzenie zawartości ZIP oraz odtworzenie małej kopii testowej.
+4. Opcjonalna Opera: dołączenie do właściwej rozmowy i brak samodzielnego
+   wysłania wiadomości. Ręczne dołączanie musi pozostać dostępne.
+5. Ochrona systemu: wcześniejszy launcher był zgłaszany przez antywirusa.
+   Nie potwierdzono usunięcia tego zgłoszenia dla nowego wydania.
+   Jeżeli plik zostanie zablokowany, zachowaj komunikat i pozostaw ochronę
+   włączoną; nie oznaczaj takiego wyniku jako zaliczonego testu.
+
+STATUS PUBLIKACJI
+Przygotowano paczkę aplikacji, źródła, instrukcje i opis wydania.
+Nie utworzono publicznego repozytorium, strony pobierania ani wpisu
+w sklepie rozszerzeń. Proponowany tag: v0.3.0-rc.1 (pre-release).
+Publiczne wydanie stabilne wymaga rozstrzygnięcia powyższych kontroli.
+
+DOWODY
+Źródła zawierają validation/release-0.3.0-rc.1:
+core-audit-summary.json, launch-*.json, bridge-*.json,
+progress-ui.json, progress-engine.json, progress-review.json,
+release-core-results.json i release-validation.json.
+Pliki wykonania zapisują wynik procesu i sumy sprawdzanych źródeł.

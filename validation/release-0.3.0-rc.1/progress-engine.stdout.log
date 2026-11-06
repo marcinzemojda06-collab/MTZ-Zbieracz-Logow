@@ -1,0 +1,11 @@
+PASS Real pre-canceled worker exits3 with no new package and GUI shows cancellation
+PASS Real Full cancellation after progress cleans its own partial copy and preserves the source
+PASS Diagnostic ZIP reports bytes within one large entry and stays below completion
+PASS Full copy reports byte-level progress inside large file and restores exact bytes
+PASS All-zero-byte input completes file progress without NaN or false byte counts
+PASS Locked file stays an explicit skip and its unread bytes are not credited
+PASS Throwing or noisy callback cannot corrupt the archive result
+PASS Real diagnostics worker writes valid monotonic IPC and only UI promotes99 to100
+PASS Real full worker retains multipart output and completed archive selection
+PASS Real failed worker reports failure IPC and never reaches100
+RESULT cases=10 passed=10 failed=0 assertions=477

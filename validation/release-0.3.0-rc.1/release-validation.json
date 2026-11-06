@@ -1,0 +1,94 @@
+{
+  "application": "MTZ Zbieracz",
+  "version": "0.3.0-rc.1",
+  "status": "passed-with-explicit-platform-limitations",
+  "failed": 0,
+  "native_windows_validated": false,
+  "live_opera_validated": false,
+  "antivirus_resolution_verified": false,
+  "public_hosting_created": false,
+  "test_source_checksums_match": true,
+  "checks": [
+    {
+      "suite": "core",
+      "passed": 23,
+      "unit": "cases"
+    },
+    {
+      "suite": "full bundle",
+      "passed": 120,
+      "unit": "assertions"
+    },
+    {
+      "suite": "release core",
+      "passed": 13,
+      "assertions": 54,
+      "unit": "cases"
+    },
+    {
+      "suite": "launcher",
+      "passed": 55,
+      "unit": "checks"
+    },
+    {
+      "suite": "session",
+      "passed": 47,
+      "unit": "checks"
+    },
+    {
+      "suite": "restore",
+      "passed": 57,
+      "unit": "checks"
+    },
+    {
+      "suite": "bridge TCP",
+      "passed": 45,
+      "unit": "checks"
+    },
+    {
+      "suite": "extension JS",
+      "passed": 22,
+      "unit": "cases"
+    },
+    {
+      "suite": "extension DOM",
+      "passed": 15,
+      "unit": "cases"
+    },
+    {
+      "suite": "GUI state",
+      "passed": 21,
+      "assertions": 121,
+      "unit": "cases"
+    },
+    {
+      "suite": "progress engine",
+      "passed": 10,
+      "assertions": 477,
+      "unit": "cases"
+    }
+  ],
+  "production_sha256": {
+    "Uruchom-MTZ-Logi.cmd": "75f383040508c331bfd72fb987897497a5857b05dc07a2a7d9c45f6886217b41",
+    "Instaluj-MTZ-Logi.cmd": "0af348dec5eb1392875dbe55c0f5dd1f9e55e1f58e26dfb4fdb72806206f9ba4",
+    "Instaluj-MTZ-Logi.ps1": "44e2abace0c10b15db76e1525b0694d73a433e868b928e2d91565733664a8c89",
+    "Launch-MTZ.ps1": "c602575082e84831389501e88464b9032e0f0378f9a6f0a0262c95bafea2820a",
+    "MTZ-Logi.ps1": "d22d0e43fe827856d3b30cfb4129616fa7d05d18da6ed3b15a0de9bda8d4cb04",
+    "core.ps1": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815",
+    "session.ps1": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53",
+    "full-bundle.ps1": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314",
+    "Collect-Worker.ps1": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7",
+    "Restore-MTZ-Paczka.ps1": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4",
+    "bridge/Bridge.cs": "f402be48783a2c0c1e13f6f12ec49834b4a622fcab4d068052a6b1464297d95a",
+    "rozszerzenie/manifest.json": "e7afb31f9f08df1e8e8493686b08d2986be41f6e17e6958d1fdd37f4cc3446b9",
+    "rozszerzenie/common.js": "0fc630e014d237e72236050f169a845420b781692c536609f1d78ce49f45fe4a",
+    "rozszerzenie/content.js": "7b822add157f0e5c10713f3ab175363391b87a53881799980de21be60bc466dd",
+    "rozszerzenie/service-worker.js": "98363aa99ee111d2b05665c50171a6bc655b0ae43d499c8a45c8a27c646052bf",
+    "VERSION.json": "bb4aa103d13bc9161e1237af7655c4c565281974292a49de99d763426d882c47"
+  },
+  "limits": [
+    "PowerShell7.4.13 Linux tests do not prove WindowsPowerShell5.1 or WindowsForms rendering.",
+    "COM, CIM and visual controls use explicit test doubles.",
+    "No antivirus scan, signing or public hosting performed."
+  ]
+}

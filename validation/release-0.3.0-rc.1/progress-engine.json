@@ -1,0 +1,186 @@
+{
+  "Version": "0.3.0-rc.1",
+  "Suite": "Engine",
+  "Runtime": "7.4.13",
+  "Platform": "Unix",
+  "Cases": 10,
+  "PassedCases": 10,
+  "FailedCases": 0,
+  "Assertions": 477,
+  "NativePowerShellExecuted": true,
+  "NativeArchiveAndWorkerOperations": true,
+  "UiStateUsesExplicitFakeControls": true,
+  "WindowsFormsRendered": false,
+  "WindowsPowerShell51Executed": false,
+  "InputSha256": {
+    "MTZ-Logi.ps1": "d22d0e43fe827856d3b30cfb4129616fa7d05d18da6ed3b15a0de9bda8d4cb04",
+    "core.ps1": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815",
+    "full-bundle.ps1": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314",
+    "Collect-Worker.ps1": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7",
+    "session.ps1": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53",
+    "Restore-MTZ-Paczka.ps1": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4",
+    "bridge/Bridge.cs": "f402be48783a2c0c1e13f6f12ec49834b4a622fcab4d068052a6b1464297d95a"
+  },
+  "SourceFilesChangedDuringTests": [],
+  "Results": [
+    {
+      "Name": "Real pre-canceled worker exits3 with no new package and GUI shows cancellation",
+      "Status": "PASS",
+      "Assertions": 20,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "ExitCode": 3,
+        "FakeControls": true,
+        "Modes": [
+          "Diagnostics",
+          "Full"
+        ],
+        "NativeWorkersExecuted": true,
+        "NewArchiveCount": 0
+      }
+    },
+    {
+      "Name": "Real Full cancellation after progress cleans its own partial copy and preserves the source",
+      "Status": "PASS",
+      "Assertions": 30,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "OriginalSha256": "3E93176037518BE543D56EC9F1F0D7061557D224820BE2DC5AEB1F84D0B77919",
+        "FinalPercent": 19,
+        "ObservedSnapshots": 12,
+        "ExitCode": 3,
+        "ObservedCopyProgressPercent": 19,
+        "NativeWorkerExecuted": true,
+        "FakeControls": true,
+        "CancellationStage": "Kopiowanie i kompresja",
+        "CanceledStatusCompletedBytes": 0,
+        "CounterNote": "The cancellation status resets detailed byte counters; actual copy progress was observed by stage and percent before the cancellation request."
+      }
+    },
+    {
+      "Name": "Diagnostic ZIP reports bytes within one large entry and stays below completion",
+      "Status": "PASS",
+      "Assertions": 32,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "FinalPercent": 90,
+        "WithinFirstEntry": [
+          {
+            "Percent": 72,
+            "CompletedBytes": 1048576,
+            "TotalBytes": 2801548
+          },
+          {
+            "Percent": 81,
+            "CompletedBytes": 2097152,
+            "TotalBytes": 2801548
+          },
+          {
+            "Percent": 88,
+            "CompletedBytes": 2800000,
+            "TotalBytes": 2801548
+          }
+        ],
+        "CallbackEvents": 15
+      }
+    },
+    {
+      "Name": "Full copy reports byte-level progress inside large file and restores exact bytes",
+      "Status": "PASS",
+      "Assertions": 133,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "Archives": 7,
+        "DistinctByteUpdatesWithinOneFile": 10,
+        "RestoredLargeFileSha256": "160615F11211D203B0D5583B108AC2D3184F0031F8BB8FF6D6C62845B1496DF3",
+        "EmptyFileRestored": true,
+        "CallbackEvents": 64
+      }
+    },
+    {
+      "Name": "All-zero-byte input completes file progress without NaN or false byte counts",
+      "Status": "PASS",
+      "Assertions": 94,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "FinalPercent": 98,
+        "CallbackEvents": 45,
+        "Files": 3,
+        "SourceBytes": 0
+      }
+    },
+    {
+      "Name": "Locked file stays an explicit skip and its unread bytes are not credited",
+      "Status": "PASS",
+      "Assertions": 90,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "FinalPercent": 98,
+        "ActualCopiedBytes": 24,
+        "Complete": false,
+        "PlannedBytes": 1048600,
+        "Skipped": 1
+      }
+    },
+    {
+      "Name": "Throwing or noisy callback cannot corrupt the archive result",
+      "Status": "PASS",
+      "Assertions": 1,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "SuppressedReportingFailures": 13,
+        "CaptureSucceeded": true
+      }
+    },
+    {
+      "Name": "Real diagnostics worker writes valid monotonic IPC and only UI promotes99 to100",
+      "Status": "PASS",
+      "Assertions": 30,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "FakeControls": true,
+        "UiFinalPercent": 100,
+        "WorkerExit": 0,
+        "ObservedSnapshots": 8,
+        "WorkerFinalPercent": 99
+      }
+    },
+    {
+      "Name": "Real full worker retains multipart output and completed archive selection",
+      "Status": "PASS",
+      "Assertions": 40,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "WorkerFinalPercent": 99,
+        "FakeControls": true,
+        "Archives": 6,
+        "UiFinalPercent": 100,
+        "WorkerExit": 0,
+        "ObservedSnapshots": 17
+      }
+    },
+    {
+      "Name": "Real failed worker reports failure IPC and never reaches100",
+      "Status": "PASS",
+      "Assertions": 7,
+      "Error": "",
+      "Stack": "",
+      "Evidence": {
+        "FakeControls": true,
+        "UiFinalPercent": 0,
+        "WorkerExit": 1,
+        "ObservedSnapshots": 2,
+        "WorkerFinalPercent": 0
+      }
+    }
+  ]
+}

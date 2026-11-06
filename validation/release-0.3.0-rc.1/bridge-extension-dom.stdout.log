@@ -1,0 +1,16 @@
+PASS valid handoff assigns exact ZIP bytes and dispatches picker events
+PASS handoff preserves draft and never submits message
+PASS bearer handoff fragment removed while unrelated hash is preserved
+PASS normal conversation without handoff performs no local request
+PASS foreign page never requests local data
+PASS invalid token performs no local request
+PASS existing selected files are preserved and retry is offered
+PASS ambiguous picker never assigns ZIP
+PASS picker outside composer is not selected
+PASS picker disabled by its fieldset is not used until the form is ready
+PASS closing the handoff panel discards a pending response without attachment
+PASS changing conversation while receiving never attaches to the new composer
+PASS invalid local payload reports error without changing picker
+PASS local bridge refusal is visible and does not attach
+PASS retry after existing file is removed uses same snapshot without refetch
+RESULT content DOM fixtures passed=15 failed=0

@@ -1,0 +1,14 @@
+{
+  "suite": "bridge-extension-js",
+  "exitCode": 0,
+  "passed": 22,
+  "expected": 22,
+  "duration_seconds": 0.222,
+  "platform": "Linux",
+  "native_windows_tested": false,
+  "live_opera_chatgpt_tested": false,
+  "command": [
+    "node",
+    "rozszerzenie/tests/test-extension.cjs"
+  ]
+}

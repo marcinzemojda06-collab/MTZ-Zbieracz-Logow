@@ -1,0 +1,122 @@
+{
+  "application": "MTZ Zbieracz logow Minecrafta",
+  "version": "0.3.0-rc.1",
+  "native_windows_validated": false,
+  "files": [
+    {
+      "path": "Collect-Worker.ps1",
+      "bytes": 11176,
+      "sha256": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7"
+    },
+    {
+      "path": "INSTRUKCJA-PL.txt",
+      "bytes": 8201,
+      "sha256": "8eca3bf283602f6b8715adcd2ea95fb82566a7a7ab3136673d8821af4f621851"
+    },
+    {
+      "path": "Instaluj-MTZ-Logi.cmd",
+      "bytes": 299,
+      "sha256": "0af348dec5eb1392875dbe55c0f5dd1f9e55e1f58e26dfb4fdb72806206f9ba4"
+    },
+    {
+      "path": "Instaluj-MTZ-Logi.ps1",
+      "bytes": 276,
+      "sha256": "44e2abace0c10b15db76e1525b0694d73a433e868b928e2d91565733664a8c89"
+    },
+    {
+      "path": "LICENSE.txt",
+      "bytes": 1105,
+      "sha256": "b74fb0c8912874cf42cc1b9e0be6cc1ced0c4682bc9ca9c2a1be9976b5eb51f7"
+    },
+    {
+      "path": "Launch-MTZ.ps1",
+      "bytes": 12870,
+      "sha256": "c602575082e84831389501e88464b9032e0f0378f9a6f0a0262c95bafea2820a"
+    },
+    {
+      "path": "MTZ-Logi.ps1",
+      "bytes": 47298,
+      "sha256": "d22d0e43fe827856d3b30cfb4129616fa7d05d18da6ed3b15a0de9bda8d4cb04"
+    },
+    {
+      "path": "PRYWATNOSC-PL.txt",
+      "bytes": 2809,
+      "sha256": "8a5b1eb9f40cad97377ee1f82a87489a4db243b391ec0c2fda97f8fe7d816d8e"
+    },
+    {
+      "path": "Restore-MTZ-Paczka.ps1",
+      "bytes": 17321,
+      "sha256": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4"
+    },
+    {
+      "path": "START-TUTAJ.txt",
+      "bytes": 2023,
+      "sha256": "794ed3aeb71aa347307648103ef4a7292f7d7418e8549cb78ed0226addbc917c"
+    },
+    {
+      "path": "Uruchom-MTZ-Logi.cmd",
+      "bytes": 429,
+      "sha256": "75f383040508c331bfd72fb987897497a5857b05dc07a2a7d9c45f6886217b41"
+    },
+    {
+      "path": "VERSION.json",
+      "bytes": 423,
+      "sha256": "bb4aa103d13bc9161e1237af7655c4c565281974292a49de99d763426d882c47"
+    },
+    {
+      "path": "WERYFIKACJA-PL.txt",
+      "bytes": 4429,
+      "sha256": "7b284f97d9c671a1302e494ca2a40820516f38266c54d89576962dcda3109682"
+    },
+    {
+      "path": "ZMIANY-0.3.0-rc.1.txt",
+      "bytes": 2488,
+      "sha256": "3c73585b98891c5eb63fb0be7322d273f834356710f0ee31d57a54590ad1ad1a"
+    },
+    {
+      "path": "bridge/Bridge.cs",
+      "bytes": 18477,
+      "sha256": "f402be48783a2c0c1e13f6f12ec49834b4a622fcab4d068052a6b1464297d95a"
+    },
+    {
+      "path": "core.ps1",
+      "bytes": 33089,
+      "sha256": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815"
+    },
+    {
+      "path": "full-bundle.ps1",
+      "bytes": 32913,
+      "sha256": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314"
+    },
+    {
+      "path": "rozszerzenie/README-PL.txt",
+      "bytes": 4157,
+      "sha256": "c04f35fd7044d361a4951a3aab0edcf26daa742f77774b17f6b16c68b9cc8165"
+    },
+    {
+      "path": "rozszerzenie/common.js",
+      "bytes": 4064,
+      "sha256": "0fc630e014d237e72236050f169a845420b781692c536609f1d78ce49f45fe4a"
+    },
+    {
+      "path": "rozszerzenie/content.js",
+      "bytes": 6377,
+      "sha256": "7b822add157f0e5c10713f3ab175363391b87a53881799980de21be60bc466dd"
+    },
+    {
+      "path": "rozszerzenie/manifest.json",
+      "bytes": 583,
+      "sha256": "e7afb31f9f08df1e8e8493686b08d2986be41f6e17e6958d1fdd37f4cc3446b9"
+    },
+    {
+      "path": "rozszerzenie/service-worker.js",
+      "bytes": 3720,
+      "sha256": "98363aa99ee111d2b05665c50171a6bc655b0ae43d499c8a45c8a27c646052bf"
+    },
+    {
+      "path": "session.ps1",
+      "bytes": 7659,
+      "sha256": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53"
+    }
+  ]
+}

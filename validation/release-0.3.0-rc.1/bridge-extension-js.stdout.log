@@ -1,0 +1,23 @@
+PASS manifest: only ChatGPT content script and loopback network permission
+PASS tokens: exact 64 hexadecimal characters only
+PASS conversation URLs: normal and custom GPT paths; reject other origins and credentials
+PASS sender: top-level own extension and real conversation required
+PASS names: ASCII ZIP basename; no traversal, control characters or excessive length
+PASS handoff hash: extract and remove only one valid marker, retain unrelated parts
+PASS base64: chunked encoding/decoding preserves binary ZIP bytes
+PASS base64: reject bad alphabet, invalid sizes and non-ZIP payloads
+PASS ZIP signature: file and empty-archive signatures accepted; other content rejected
+PASS picker: choose unique ZIP input in visible composer, filter image picker
+PASS picker: ambiguity fails closed, missing or duplicate composers fail closed
+PASS picker: unrelated global input never selected, even if it is the only picker
+PASS worker: loopback only, bearer token only, no cookies, no redirects, valid bytes returned
+PASS worker: wrong sender and invalid token do not touch network
+PASS worker: accepted uppercase token is normalized for the loopback protocol
+PASS worker: expired/unauthorized handoff gives actionable failure
+PASS worker: reject invalid filename, wrong MIME type and invalid ZIP content
+PASS worker: declared oversize rejected before reading
+PASS worker: declared ZIP length must match the complete streamed response
+PASS worker: streamed oversize cancelled even without Content-Length
+PASS worker: timeout and connection errors do not claim successful upload
+PASS content script: never clicks native Send and never changes message text
+22/22 tests passed

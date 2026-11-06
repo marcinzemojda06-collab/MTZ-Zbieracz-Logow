@@ -1,0 +1,48 @@
+MTZ — ZBIERACZ LOGÓW MINECRAFTA
+Zmiany 0.2.2-beta.1 → 0.3.0-rc.1 • 6 listopada 2026
+
+PIERWSZE URUCHOMIENIE
+- Usunięto domyślną ścieżkę konkretnego autora/profilu.
+- Dodano listę profili ze standardowego katalogu CurseForge oraz .minecraft.
+  Użytkownik wybiera profil; pozostałe lokalizacje wskazuje ręcznie.
+- Nowa instalacja domyślnie tworzy Szybką diagnostykę.
+- Zachowano poprawne wcześniejsze ustawienia, także wybór pełnej kopii.
+- Można usunąć zapamiętany adres rozmowy przez wyczyszczenie pola.
+
+PAKOWANIE
+- Dodano kooperatywne anulowanie bieżącej próby i osobny stan Anulowano.
+- Normalne zamknięcie podczas pakowania czeka na zakończenie porządkowania.
+- Wcześniejsze paczki i oryginalna instancja nie są usuwane przy anulowaniu.
+- Błąd zapisu wyjściowego ZIP-a jest błędem całej próby, nie pozornym sukcesem
+  z adnotacją o pominiętym pliku.
+- Rozszerzono redakcję nagłówków uwierzytelniania i ścieżek zapisanych w JSON.
+- Szeroki pasek 0–100% z wydania 0.2.2 pozostaje oparty na wykonanej pracy.
+  100% wymaga zakończenia procesu i sprawdzenia gotowych archiwów.
+
+INSTALACJA I SESJA
+- Jeden jawny Launch-MTZ.ps1 obsługuje oba wejścia CMD oraz instalator.
+- Usunięto wykonywanie skryptu ukrytego wewnątrz pliku CMD.
+- Zachowano etap przygotowania nowej wersji, kopię poprzedniej i cofnięcie
+  nieudanej podmiany.
+- Blokady zapobiegają jednoczesnej instalacji i podmianie działającej aplikacji.
+- Drugie okno zbieracza nie uruchamia równoległego zbierania.
+- Poprawiono rozpoznawanie cytowanego --gameDir i zapisu --gameDir=...
+  w poleceniach procesów Java.
+
+ODTWARZANIE
+- Odtwarzanie najpierw weryfikuje dane w osobnym katalogu roboczym.
+- Docelowy folder jest publikowany dopiero po sprawdzeniu całej zawartości.
+- Nieprawidłowa suma kontrolna nie pozostawia profilu wyglądającego na
+  prawidłowo odtworzony.
+
+ROZSZERZENIE 0.1.1
+- Czeka także na odblokowanie nadrzędnego fieldset formularza.
+- Sprawdza zgodność Content-Length z odebranymi bajtami.
+- Normalizuje kod przekazania i odrzuca nieprawidłowe nagłówki HTTP.
+- Zachowano wymaganie kliknięcia w zbieraczu, ograniczony localhost,
+  ręczne wysyłanie wiadomości i brak dostępu do danych konta.
+
+STATUS
+Kandydat do wydania. Wyniki testów oraz niezweryfikowane elementy Windows
+opisuje WERYFIKACJA-PL.txt. Nie jest to deklaracja usunięcia wcześniejszego
+wykrycia antywirusowego ani potwierdzonego działania na Windows PowerShell5.1.

@@ -1,0 +1,92 @@
+{
+  "Version": "0.3.0-rc.1",
+  "GeneratedUtc": "2026-11-06T18:31:31.4244690Z",
+  "PowerShell": "7.4.13",
+  "RuntimeWindows": false,
+  "NativeWindowsUiValidated": false,
+  "EngineTestsOnly": true,
+  "Tests": 13,
+  "Passed": 13,
+  "Failed": 0,
+  "Assertions": 54,
+  "Results": [
+    {
+      "Name": "Windows profile names with spaces and escaped JSON paths are redacted",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.1917212
+    },
+    {
+      "Name": "Raw and JSON authentication headers redact non-Bearer schemes",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.0129711
+    },
+    {
+      "Name": "Inventory numbering uses stable ordinal relative path order",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.2428102
+    },
+    {
+      "Name": "A cancellation before starting creates no archive",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.1133843
+    },
+    {
+      "Name": "Diagnostic cancellation during compression closes and removes the partial file",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 2.2198241
+    },
+    {
+      "Name": "Full cancellation during enumeration removes the preliminary diagnostic ZIP",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.2301256
+    },
+    {
+      "Name": "Full cancellation inside a file preserves original files and earlier packages",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.4620731
+    },
+    {
+      "Name": "Cancellation after publishing a part removes this attempt final ZIPs too",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.5008916
+    },
+    {
+      "Name": "Destination write failure is fatal rather than a source skip",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.313142
+    },
+    {
+      "Name": "Metadata finalization failure removes the current job files",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.5319423
+    },
+    {
+      "Name": "Cleanup refusal is propagated as a warning without deleting unrelated paths",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 0.4809344
+    },
+    {
+      "Name": "Worker observes cancel.request and returns a separate canceled result",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 1.6689787
+    },
+    {
+      "Name": "Diagnostic worker succeeds with an inspected ZIP and stays below GUI completion",
+      "Passed": true,
+      "Error": "",
+      "Seconds": 1.3111654
+    }
+  ]
+}

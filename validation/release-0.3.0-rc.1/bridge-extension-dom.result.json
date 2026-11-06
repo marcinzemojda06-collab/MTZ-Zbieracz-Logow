@@ -1,0 +1,14 @@
+{
+  "suite": "bridge-extension-dom",
+  "exitCode": 0,
+  "passed": 15,
+  "expected": 15,
+  "duration_seconds": 3.888,
+  "platform": "Linux",
+  "native_windows_tested": false,
+  "live_opera_chatgpt_tested": false,
+  "command": [
+    "node",
+    "rozszerzenie/tests/test-content-dom.cjs"
+  ]
+}

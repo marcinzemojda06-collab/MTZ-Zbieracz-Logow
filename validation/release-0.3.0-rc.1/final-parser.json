@@ -1,0 +1,55 @@
+{
+  "runtime": "7.4.13",
+  "files": [
+    {
+      "file": "Collect-Worker.ps1",
+      "errors": 0
+    },
+    {
+      "file": "core.ps1",
+      "errors": 0
+    },
+    {
+      "file": "core.tests.ps1",
+      "errors": 0
+    },
+    {
+      "file": "full-bundle.ps1",
+      "errors": 0
+    },
+    {
+      "file": "full-bundle.tests.ps1",
+      "errors": 0
+    },
+    {
+      "file": "Instaluj-MTZ-Logi.ps1",
+      "errors": 0
+    },
+    {
+      "file": "Launch-MTZ.ps1",
+      "errors": 0
+    },
+    {
+      "file": "MTZ-Logi.ps1",
+      "errors": 0
+    },
+    {
+      "file": "Restore-MTZ-Paczka.ps1",
+      "errors": 0
+    },
+    {
+      "file": "restore-release.tests.ps1",
+      "errors": 0
+    },
+    {
+      "file": "session.ps1",
+      "errors": 0
+    },
+    {
+      "file": "session.tests.ps1",
+      "errors": 0
+    }
+  ],
+  "errors": 0,
+  "nativeWindows51": false
+}

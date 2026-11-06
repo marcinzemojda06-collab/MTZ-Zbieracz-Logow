@@ -1,0 +1,37 @@
+MTZ — ZBIERACZ LOGÓW MINECRAFTA
+Wersja 0.3.0-rc.1 • kandydat do wydania • 6 listopada 2026
+
+1. Wypakuj cały ZIP do osobnego folderu.
+2. Uruchom Uruchom-MTZ-Logi.cmd bez administratora.
+   Program korzysta z Windows PowerShell 5.1 dostępnego w Windows 10/11.
+   Przygotuje aplikację w %LOCALAPPDATA%\MTZ-Logi\Aplikacja i skrót na pulpicie.
+3. Kliknij Wykryj profile albo Wybierz folder. Wskaż folder instancji
+   zawierający logs lub mods — ten, który otwiera polecenie Otwórz folder
+   przy profilu Twojego launchera.
+4. Nowa instalacja zaczyna od Szybkiej diagnostyki.
+   Ustawienia wcześniejszej wersji, w tym wybrany tryb Pełna, pozostają zachowane.
+5. Zostaw okno otwarte, uruchom Minecrafta i zakończ grę.
+   Po wykryciu końca obserwowanej sesji program przygotuje paczkę.
+   Możesz też kliknąć Przygotuj paczkę.
+6. Poczekaj na 100% i komunikat Paczka gotowa. Anuluj zatrzymuje bieżącą próbę.
+7. Kliknij Pokaż wybrany ZIP i przeciągnij plik do rozmowy lub zgłoszenia błędu.
+
+Opcjonalnie możesz użyć dołączonego rozszerzenia Opery/Chromium i przycisku
+Przekaż wybraną do ChatGPT. Wymaga to podania adresu istniejącej rozmowy.
+Program nie wymaga klucza API. Sam nie wysyła wiadomości.
+
+Pełna kopia obejmuje także światy, konfiguracje i dane graczy w oryginale.
+Wybierz ją świadomie i przygotowuj po zamknięciu Minecrafta.
+Do zwykłego zgłoszenia awarii najpierw użyj Szybkiej diagnostyki.
+
+PRZY AKTUALIZACJI
+Zamknij stare okno zbieracza i uruchom CMD z nowego, wypakowanego folderu.
+Stare ustawienia i paczki są poza folderem aplikacji. Poprzedni program
+zostanie zachowany w Kopie-aplikacji. Nie trzeba kopiować świata Minecrafta
+do folderu zbieracza.
+
+STATUS TEGO WYDANIA
+To wersja RC do sprawdzenia na Windows. Testy silnika i logiki interfejsu
+wykonano w PowerShell 7.4.13 na Linuksie; nie potwierdzają one wyglądu okna,
+rzeczywistego skrótu Windows ani dołączania w zalogowanej Operze.
+Szczegóły: WERYFIKACJA-PL.txt. Instrukcja: INSTRUKCJA-PL.txt.
