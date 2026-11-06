@@ -1,0 +1,60 @@
+{
+  "application": "MTZ Zbieracz logów Minecrafta",
+  "version": "0.3.0-rc.2",
+  "status": "passed-with-explicit-platform-limitations",
+  "failed": 0,
+  "source_commit": "6717527b1c4612f86537a7df339e832badd8befa",
+  "native_windows_validated": false,
+  "live_opera_validated": false,
+  "antivirus_resolution_verified": false,
+  "production_sha256": {
+    "Uruchom-MTZ-Logi.cmd": "a7a874cacaa3c3c15872757fedd6f9e61f71a50c28efb6f5a944f28fe3fac026",
+    "Instaluj-MTZ-Logi.cmd": "21fbb4fa1c9d85b03c3c15594778673111804e701f2be9f81c0ac612b7713a11",
+    "Instaluj-MTZ-Logi.ps1": "e2dbbedcfef5565190a29196eb7f204b39a329646cf85fb3785a1ca4ba09ccd0",
+    "Launch-MTZ.ps1": "045e5b55bd32d534fa912632c49c5daf8d378e98280e2137393abc4d311efc8e",
+    "MTZ-Logi.ps1": "38265c024057db9c5540ca1abd48681ef6a14fd3dbb15d760319ca30a12e734d",
+    "core.ps1": "a3fa86e29d5fe7786cf0d792159557dc84a7f167500482192ed420934eb8be3c",
+    "session.ps1": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53",
+    "full-bundle.ps1": "ccb2e82400d610b1b4206502dfa702928b019fe00ab610f4d8439b7752217a59",
+    "Collect-Worker.ps1": "9a71c6747972fbf1b57be8d637fd6d453c346d058b6869f75509385d82e57bf7",
+    "Restore-MTZ-Paczka.ps1": "82d6d3c5ccac6a8b4a86d09e1780b0f4a8bfd043c9f3b301f8813c99695db4c4",
+    "bridge/Bridge.cs": "f402be48783a2c0c1e13f6f12ec49834b4a622fcab4d068052a6b1464297d95a",
+    "rozszerzenie/manifest.json": "e7afb31f9f08df1e8e8493686b08d2986be41f6e17e6958d1fdd37f4cc3446b9",
+    "rozszerzenie/common.js": "0fc630e014d237e72236050f169a845420b781692c536609f1d78ce49f45fe4a",
+    "rozszerzenie/content.js": "7b822add157f0e5c10713f3ab175363391b87a53881799980de21be60bc466dd",
+    "rozszerzenie/service-worker.js": "98363aa99ee111d2b05665c50171a6bc655b0ae43d499c8a45c8a27c646052bf",
+    "rozszerzenie/README-PL.txt": "c04f35fd7044d361a4951a3aab0edcf26daa742f77774b17f6b16c68b9cc8165",
+    "START-TUTAJ.txt": "987bfe59296273612cba5626de106b2563999f12501be4f248d7439662033c07",
+    "INSTRUKCJA-PL.txt": "89bfa57034035518b43bb1a9969e30c0066d1e043936743a2148b70b27caa7bc",
+    "PRYWATNOSC-PL.txt": "eecb4888534c4836ab3c4e4ed3d0f34c7f952728c2f237ee3c7396da3ae81ccc",
+    "ZMIANY-0.3.0-rc.2.txt": "8fd19810261027605197f7f75f80ad0c288e3cdaa3c353f9271a8641ecae2933",
+    "WERYFIKACJA-PL.txt": "3ee16d83d60c09277edaa717d2bcb81d1924060de22328d686aa5345feb9e0ca",
+    "LICENSE.txt": "b74fb0c8912874cf42cc1b9e0be6cc1ced0c4682bc9ca9c2a1be9976b5eb51f7",
+    "VERSION.json": "4a379e2d9eba2cea619dd3ef12fe2855b0f7cceae01bc38153cc25b5b2e4f396"
+  },
+  "package_documents_sha256": {
+    "PODMIANA-PL.txt": "d66551eb6c141cef841776a6b80109fa8322c91b28e629db68459364684f7edc"
+  },
+  "evidence": {
+    "local_launcher": {
+      "path": "validation/release-0.3.0-rc.2/local-launcher.json",
+      "sha256": "7cd0e31010d67d3f44b194d47a2d71233a406b2f95018b79fbed4d84c36fb87f",
+      "exit_code": 0
+    },
+    "windows_launcher": {
+      "path": "validation/release-0.3.0-rc.2/windows-launcher.json",
+      "sha256": "92c3504cd71d893b5046914570bb1b03913faa883c5bb84889e73b976edbc367",
+      "exit_code": 0
+    },
+    "windows_ci": {
+      "path": "validation/release-0.3.0-rc.2/windows-ci.json",
+      "sha256": "739729b3c97e47f6c1ef6390ff26789e9a46c58480369bd230ac3833ac82990f"
+    }
+  },
+  "source_verification": {
+    "runtime_and_instructions_match_tested_github_tree": true,
+    "verified_files": 24,
+    "tree_sha": "501af92d3b92fe03d57ff2fdf5a621c73b6a20ee"
+  },
+  "scope": "Fresh installer regression on Linux PowerShell 7.4.13 and Windows PowerShell 5.1; eight production scripts parsed by Windows. The rest of production behavior is unchanged from the reviewed preflight revision except release labels. GUI/COM mocked; RAV unresolved."
+}

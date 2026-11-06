@@ -91,8 +91,9 @@ i niezerowym kodem wyjścia. Komunikat wymienia niepełne rozpakowanie
 oraz możliwe działanie ochrony jako przyczyny do sprawdzenia.
 
 Poprawka nie zmienia konfiguracji antywirusa, nie odtwarza kwarantanny
-i nie próbuje ukrywać zgłoszonego skryptu. Nie jest nowym wydaniem RC
-ani potwierdzeniem, że antywirus zaakceptuje aplikację.
+i nie próbuje ukrywać zgłoszonego skryptu. Została włączona do paczki
+**0.3.0 RC2**, która ma własny numer wersji i instrukcję podmiany.
+Nie jest potwierdzeniem, że antywirus zaakceptuje aplikację.
 
 ## Granice weryfikacji
 

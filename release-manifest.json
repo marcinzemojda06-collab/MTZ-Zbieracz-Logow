@@ -1,7 +1,17 @@
 {
   "application": "MTZ Zbieracz logow Minecrafta",
-  "version": "0.3.0-rc.1",
+  "version": "0.3.0-rc.2",
+  "release_stage": "release-candidate",
+  "source_commit": "6717527b1c4612f86537a7df339e832badd8befa",
   "native_windows_validated": false,
+  "antivirus_resolution_verified": false,
+  "validation": {
+    "scope": "Launcher regression and Windows PowerShell 5.1 syntax; GUI/COM mocked; RAV unverified",
+    "local_launcher_checks": 68,
+    "windows_launcher_checks": 70,
+    "windows_ci_url": "https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow/actions/runs/42306929747",
+    "release_review_sha256": "73f6189fae00761495d8806d9475ad4d143f06bb0df377cc1590347fc7df9735"
+  },
   "files": [
     {
       "path": "Collect-Worker.ps1",
@@ -10,18 +20,18 @@
     },
     {
       "path": "INSTRUKCJA-PL.txt",
-      "bytes": 8201,
-      "sha256": "8eca3bf283602f6b8715adcd2ea95fb82566a7a7ab3136673d8821af4f621851"
+      "bytes": 9193,
+      "sha256": "89bfa57034035518b43bb1a9969e30c0066d1e043936743a2148b70b27caa7bc"
     },
     {
       "path": "Instaluj-MTZ-Logi.cmd",
-      "bytes": 299,
-      "sha256": "0af348dec5eb1392875dbe55c0f5dd1f9e55e1f58e26dfb4fdb72806206f9ba4"
+      "bytes": 1833,
+      "sha256": "21fbb4fa1c9d85b03c3c15594778673111804e701f2be9f81c0ac612b7713a11"
     },
     {
       "path": "Instaluj-MTZ-Logi.ps1",
-      "bytes": 276,
-      "sha256": "44e2abace0c10b15db76e1525b0694d73a433e868b928e2d91565733664a8c89"
+      "bytes": 1170,
+      "sha256": "e2dbbedcfef5565190a29196eb7f204b39a329646cf85fb3785a1ca4ba09ccd0"
     },
     {
       "path": "LICENSE.txt",
@@ -30,18 +40,18 @@
     },
     {
       "path": "Launch-MTZ.ps1",
-      "bytes": 12870,
-      "sha256": "c602575082e84831389501e88464b9032e0f0378f9a6f0a0262c95bafea2820a"
+      "bytes": 14130,
+      "sha256": "045e5b55bd32d534fa912632c49c5daf8d378e98280e2137393abc4d311efc8e"
     },
     {
       "path": "MTZ-Logi.ps1",
       "bytes": 47298,
-      "sha256": "d22d0e43fe827856d3b30cfb4129616fa7d05d18da6ed3b15a0de9bda8d4cb04"
+      "sha256": "38265c024057db9c5540ca1abd48681ef6a14fd3dbb15d760319ca30a12e734d"
     },
     {
       "path": "PRYWATNOSC-PL.txt",
-      "bytes": 2809,
-      "sha256": "8a5b1eb9f40cad97377ee1f82a87489a4db243b391ec0c2fda97f8fe7d816d8e"
+      "bytes": 2866,
+      "sha256": "eecb4888534c4836ab3c4e4ed3d0f34c7f952728c2f237ee3c7396da3ae81ccc"
     },
     {
       "path": "Restore-MTZ-Paczka.ps1",
@@ -50,28 +60,28 @@
     },
     {
       "path": "START-TUTAJ.txt",
-      "bytes": 2023,
-      "sha256": "794ed3aeb71aa347307648103ef4a7292f7d7418e8549cb78ed0226addbc917c"
+      "bytes": 2404,
+      "sha256": "987bfe59296273612cba5626de106b2563999f12501be4f248d7439662033c07"
     },
     {
       "path": "Uruchom-MTZ-Logi.cmd",
-      "bytes": 429,
-      "sha256": "75f383040508c331bfd72fb987897497a5857b05dc07a2a7d9c45f6886217b41"
+      "bytes": 1820,
+      "sha256": "a7a874cacaa3c3c15872757fedd6f9e61f71a50c28efb6f5a944f28fe3fac026"
     },
     {
       "path": "VERSION.json",
-      "bytes": 423,
-      "sha256": "bb4aa103d13bc9161e1237af7655c4c565281974292a49de99d763426d882c47"
+      "bytes": 556,
+      "sha256": "4a379e2d9eba2cea619dd3ef12fe2855b0f7cceae01bc38153cc25b5b2e4f396"
     },
     {
       "path": "WERYFIKACJA-PL.txt",
-      "bytes": 4429,
-      "sha256": "7b284f97d9c671a1302e494ca2a40820516f38266c54d89576962dcda3109682"
+      "bytes": 3189,
+      "sha256": "3ee16d83d60c09277edaa717d2bcb81d1924060de22328d686aa5345feb9e0ca"
     },
     {
-      "path": "ZMIANY-0.3.0-rc.1.txt",
-      "bytes": 2488,
-      "sha256": "3c73585b98891c5eb63fb0be7322d273f834356710f0ee31d57a54590ad1ad1a"
+      "path": "ZMIANY-0.3.0-rc.2.txt",
+      "bytes": 1883,
+      "sha256": "8fd19810261027605197f7f75f80ad0c288e3cdaa3c353f9271a8641ecae2933"
     },
     {
       "path": "bridge/Bridge.cs",
@@ -81,12 +91,12 @@
     {
       "path": "core.ps1",
       "bytes": 33089,
-      "sha256": "dee90a311f327e8fe2ca5359cec70c4cc58400dd4ce71593c7530d7f3f406815"
+      "sha256": "a3fa86e29d5fe7786cf0d792159557dc84a7f167500482192ed420934eb8be3c"
     },
     {
       "path": "full-bundle.ps1",
       "bytes": 32913,
-      "sha256": "7a487384d7ea75044e361ba3bb40f8e692890ab77e1e55a4d5a680d41bcb4314"
+      "sha256": "ccb2e82400d610b1b4206502dfa702928b019fe00ab610f4d8439b7752217a59"
     },
     {
       "path": "rozszerzenie/README-PL.txt",
@@ -117,6 +127,13 @@
       "path": "session.ps1",
       "bytes": 7659,
       "sha256": "968a51a9f1b50ba069b21810a2942151fc6e79d8dfb9a5106779439cd6b1df53"
+    }
+  ],
+  "package_documents": [
+    {
+      "path": "PODMIANA-PL.txt",
+      "bytes": 2828,
+      "sha256": "d66551eb6c141cef841776a6b80109fa8322c91b28e629db68459364684f7edc"
     }
   ]
 }
