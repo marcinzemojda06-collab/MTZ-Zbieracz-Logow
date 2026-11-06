@@ -214,7 +214,7 @@ $script:captureCanceled = $false
 $script:closeAfterCapture = $false
 
 $form = New-Object Windows.Forms.Form
-$form.Text = 'MTZ — Zbieracz logów Minecrafta 0.3.0 RC1'
+$form.Text = 'MTZ — Zbieracz logów Minecrafta 0.3.0 RC2'
 $workArea = [Windows.Forms.Screen]::PrimaryScreen.WorkingArea
 $form.Size = New-Object Drawing.Size(1040, ([Math]::Min(900, [Math]::Max(620, $workArea.Height - 60))))
 $form.MinimumSize = New-Object Drawing.Size(960, 620)

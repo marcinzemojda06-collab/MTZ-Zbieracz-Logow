@@ -1,57 +1,63 @@
-MTZ ZBIERACZ — MATERIAŁY DO PUBLIKACJI 0.3.0-rc.1
+﻿MTZ ZBIERACZ — EXPERIMENTAL / EARLY ACCESS
+Materiały dotyczące 0.3.0-rc.2 • aktualizacja statusu: 7 listopada 2026
 
-Repozytorium: MTZ-Zbieracz-Logow
-Adres: https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow
-Wersja źródeł: 0.3.0-rc.1 (RC1)
-Status: pierwszy import źródeł; wydanie GitHub Release jeszcze nieopublikowane
-Proponowany tytuł wydania: MTZ Zbieracz logów Minecrafta 0.3.0 RC1
-Planowany tag wydania: v0.3.0-rc.1
-Typ planowanego wydania: pre-release / wersja testowa
+Repozytorium: https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow
+Wersja: 0.3.0-rc.2 (RC2)
+Status projektu: Experimental / Early Access — wersja eksperymentalna we wczesnym dostępie
+Planowany tag: v0.3.0-rc.2
+Typ ewentualnego wydania: pre-release / wersja testowa
+Wydanie stabilne: nie
+Zalecenie dla pobierających: Nie zaleca się pobierania ani instalowania tej wersji do czasu wydania pełnej, stabilnej wersji.
+GitHub Release: nieopublikowany
+Utworzenie ZIP-a lokalnie nie tworzy ani nie publikuje GitHub Release.
 
-OPIS DO STRONY WYDANIA
-MTZ Zbieracz to lokalna aplikacja Windows do przygotowywania diagnostyki
-Minecraft Java i pełnych kopii instancji. Po wybraniu profilu obserwuje
-sesję gry i tworzy ZIP, który można dołączyć do zgłoszenia lub rozmowy.
+OPIS WYDANIA
+MTZ Zbieracz to aplikacja Windows do zbierania diagnostyki Minecraft Java
+oraz pełnych kopii instancji. RC2 zawiera poprawkę instalatora: sprawdzenie
+kompletu plików przed uruchomieniem PowerShella, kontrolę launchera oraz
+kontrolę przygotowanego katalogu przed zastąpieniem poprzedniej aplikacji.
 
-Wersja 0.3.0 RC1 dodaje wybór profili, bezpieczne anulowanie, wspólny
-instalator, blokadę równoczesnej aktualizacji, poprawki odtwarzania
-oraz usprawnienia opcjonalnego rozszerzenia Opery/Chromium.
-Szeroki pasek pokazuje postęp wykonanej pracy.
+Paczka podmiany zawiera folder Aplikacja i osobną instrukcję PODMIANA-PL.txt.
+Można skopiować zawartość Aplikacja do obecnego folderu programu albo
+uruchomić dołączony instalator z osobno rozpakowanej paczki. Drugi wariant
+zachowuje poprzedni katalog programu w Kopie-aplikacji. Ustawienia i ZIP-y
+użytkownika są przechowywane obok folderu Aplikacja.
 
-Pobierz plik Windows, wypakuj całość i uruchom Uruchom-MTZ-Logi.cmd.
-Nie umieszczaj aplikacji w katalogu mods.
-Program nie wymaga klucza API i sam nie wysyła wiadomości.
-Domyślnie zbiera ograniczoną diagnostykę. Pełna kopia jest osobnym wyborem
-i zawiera oryginalne, nieanonimizowane pliki instancji.
+Szeroki pasek pokazuje procent wykonanej pracy. Nowa instalacja domyślnie
+wybiera szybką diagnostykę. Pełna kopia jest osobną opcją i zawiera
+oryginalne, nieanonimizowane pliki instancji. Program nie wymaga klucza API,
+a wysłanie wiadomości lub załącznika pozostaje czynnością użytkownika.
 
-To kandydat do wydania. Testy kodu wykonano na Linuksie i jawnie opisano
-ich ograniczenia. Końcowe sprawdzenie Windows PowerShell 5.1, WinForms,
-skrótu i bieżącej Opery pozostaje wymagane. Wcześniejszy launcher był
-zgłaszany przez antywirusa; nie potwierdzono rozwiązania tamtego zgłoszenia.
-Nie wyłączaj ochrony w celu uruchamiania aplikacji.
+Weryfikacja podmiany obejmuje automatyczne testy launchera i Windows
+PowerShell 5.1, z jawnymi ograniczeniami opisanymi w WERYFIKACJA-PL.txt.
+Pełny interaktywny test GUI pozostaje niepotwierdzony.
+RAV Endpoint Protection zablokował także Launch-MTZ.ps1 z paczki RC2.
+Zgodność SHA-1 potwierdzono ze zgłoszeniem z 6 listopada 2026, godz. 23:54.
+Przyczyna wykrycia pozostaje otwarta; nie potwierdzono fałszywego alarmu.
+Na komputerze, na którym ochrona blokuje plik, należy przerwać podmianę.
+Szczegóły: docs/URUCHAMIANIE-I-OCHRONA.md i PROJECT-STATUS.json.
 
-DOŁĄCZANE PLIKI
-- MTZ-Zbieracz-Logow-Windows-0.3.0-rc.1.zip
-- MTZ-Zbieracz-Logow-Zrodla-0.3.0-rc.1.zip
-- MTZ-Zbieracz-Logow-Weryfikacja-0.3.0-rc.1.txt
+PLIKI
+Główny plik: MTZ-Zbieracz-Logow-Podmiana-0.3.0-rc.2.zip
+Kontrola integralności: SHA256SUMS.txt
+Opcjonalna paczka źródeł powstaje tylko z --with-sources.
 
-KOLEJNOŚĆ
-1. Sprawdź kandydata na Windows według WERYFIKACJA-PL.txt.
-2. Sprawdź, czy źródła i LICENSE.txt w repozytorium odpowiadają przygotowywanemu wydaniu.
-3. W Releases utwórz szkic i wybierz tag v0.3.0-rc.1.
-4. Dołącz trzy pliki wydania i opis.
-5. Zaznacz, że jest to pre-release.
-6. Sprawdź materiały i dopiero opublikuj wydanie.
-7. Udostępnij rzeczywisty adres utworzonego wydania.
+PRZYGOTOWANIE
+1. Uruchom świeże testy dla bieżących źródeł i zapisz dowody RC2.
+2. Sprawdź zakres i sumy plików w release-validation.json.
+3. Zbuduj paczkę poleceniem python tools/build-release.py.
+4. Zweryfikuj gotowy ZIP i zawartość release-manifest.json.
+5. Przed publikacją rozstrzygnij zgłoszenie blokady ochrony. Ewentualne
+   wydanie GitHub oznacz jako pre-release i Experimental / Early Access.
+   Opisz znane ograniczenia oraz rzeczywisty zakres testów. Dołącz dokładnie
+   sprawdzoną paczkę dla właściwej rewizji z jej sumą kontrolną.
+6. Udostępnij rzeczywisty adres opublikowanego wydania.
 
-Nie dołączaj do repozytorium katalogu %LOCALAPPDATA%\MTZ-Logi ani paczek
-zebranych z gry. Dystrybucja aplikacji nie wymaga logów, konfiguracji,
-światów ani danych kont użytkownika.
+Źródła i dystrybucja programu nie zawierają zebranych logów Minecrafta,
+światów, danych kont ani katalogu %LOCALAPPDATA%\MTZ-Logi użytkownika.
 
-Repozytorium projektu zostało utworzone. Ten dokument przygotowuje
-osobne wydanie GitHub Release wersji 0.3.0-rc.1, którego jeszcze
-nie opublikowano. Publikację poprzedza końcowe sprawdzenie na Windows
-opisane w WERYFIKACJA-PL.txt.
-Dokumentacja GitHub:
-https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
-https://docs.github.com/en/repositories/releasing-projects-on-github/linking-to-releases
+AKTUALIZACJA STATUSU REPOZYTORIUM
+Oznaczenia Experimental / Early Access opisują etap rozwoju projektu.
+Numer 0.3.0-rc.2 i archiwalne raporty pozostają bez zmian. Zmiana dokumentacji
+nie tworzy nowej paczki, nie potwierdza usunięcia alarmu i nie zastępuje
+wyników testów innymi. Bieżące dane statusu: PROJECT-STATUS.json.

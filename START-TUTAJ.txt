@@ -1,37 +1,43 @@
-MTZ — ZBIERACZ LOGÓW MINECRAFTA
-Wersja 0.3.0-rc.1 • kandydat do wydania • 6 listopada 2026
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA
+Wersja 0.3.0-rc.2 • kandydat do wydania • 6 listopada 2026
 
+JEŚLI PODMIENIASZ ISTNIEJĄCĄ APLIKACJĘ
+Zamknij stare okno i poczekaj na zakończenie jego pracy. Skopiuj wszystkie
+pliki i podfoldery z Aplikacja w ZIP-ie do:
+  %LOCALAPPDATA%\MTZ-Logi\Aplikacja
+Zatwierdź zastąpienie plików. Nie twórz Aplikacja\Aplikacja.
+Pierwszy start wykonaj przez NOWY Uruchom-MTZ-Logi.cmd w tym folderze.
+Ręczne kopiowanie nie tworzy kopii poprzedniej wersji. Szczegółowe kroki,
+opis danych zachowanych obok aplikacji i alternatywa z instalatorem są
+w PODMIANA-PL.txt dołączonym obok folderu Aplikacja w pobranym ZIP-ie.
+
+PIERWSZA INSTALACJA LUB AKTUALIZACJA PRZEZ INSTALATOR
 1. Wypakuj cały ZIP do osobnego folderu.
-2. Uruchom Uruchom-MTZ-Logi.cmd bez administratora.
+2. W dołączonym Aplikacja uruchom Instaluj-MTZ-Logi.cmd bez administratora.
    Program korzysta z Windows PowerShell 5.1 dostępnego w Windows 10/11.
    Przygotuje aplikację w %LOCALAPPDATA%\MTZ-Logi\Aplikacja i skrót na pulpicie.
+   Poprzedni katalog aplikacji zachowa w Kopie-aplikacji.
 3. Kliknij Wykryj profile albo Wybierz folder. Wskaż folder instancji
-   zawierający logs lub mods — ten, który otwiera polecenie Otwórz folder
+   zawierający logs lub mods — ten, który otwiera Otwórz folder
    przy profilu Twojego launchera.
 4. Nowa instalacja zaczyna od Szybkiej diagnostyki.
-   Ustawienia wcześniejszej wersji, w tym wybrany tryb Pełna, pozostają zachowane.
+   Ustawienia wcześniejszej wersji, w tym wybór Pełna, są zachowane.
 5. Zostaw okno otwarte, uruchom Minecrafta i zakończ grę.
    Po wykryciu końca obserwowanej sesji program przygotuje paczkę.
    Możesz też kliknąć Przygotuj paczkę.
 6. Poczekaj na 100% i komunikat Paczka gotowa. Anuluj zatrzymuje bieżącą próbę.
-7. Kliknij Pokaż wybrany ZIP i przeciągnij plik do rozmowy lub zgłoszenia błędu.
+7. Kliknij Pokaż wybrany ZIP i przeciągnij plik do rozmowy lub zgłoszenia.
 
-Opcjonalnie możesz użyć dołączonego rozszerzenia Opery/Chromium i przycisku
-Przekaż wybraną do ChatGPT. Wymaga to podania adresu istniejącej rozmowy.
-Program nie wymaga klucza API. Sam nie wysyła wiadomości.
+Opcjonalne rozszerzenie Opery/Chromium obsługuje Przekaż wybraną do ChatGPT.
+Wymaga adresu istniejącej rozmowy. Program nie wymaga klucza API.
+Wiadomość wysyłasz samodzielnie.
 
 Pełna kopia obejmuje także światy, konfiguracje i dane graczy w oryginale.
-Wybierz ją świadomie i przygotowuj po zamknięciu Minecrafta.
-Do zwykłego zgłoszenia awarii najpierw użyj Szybkiej diagnostyki.
+Przygotowuj ją po zamknięciu Minecrafta. Do zwykłego zgłoszenia awarii
+najpierw użyj Szybkiej diagnostyki.
 
-PRZY AKTUALIZACJI
-Zamknij stare okno zbieracza i uruchom CMD z nowego, wypakowanego folderu.
-Stare ustawienia i paczki są poza folderem aplikacji. Poprzedni program
-zostanie zachowany w Kopie-aplikacji. Nie trzeba kopiować świata Minecrafta
-do folderu zbieracza.
-
-STATUS TEGO WYDANIA
-To wersja RC do sprawdzenia na Windows. Testy silnika i logiki interfejsu
-wykonano w PowerShell 7.4.13 na Linuksie; nie potwierdzają one wyglądu okna,
-rzeczywistego skrótu Windows ani dołączania w zalogowanej Operze.
-Szczegóły: WERYFIKACJA-PL.txt. Instrukcja: INSTRUKCJA-PL.txt.
+RAV I STATUS WYDANIA
+Poprawka instalatora nie jest potwierdzeniem usunięcia wykrycia RAV.
+Jeżeli ochrona zablokuje plik, przerwij próbę i zachowaj nazwę pliku
+oraz komunikat. Szczegóły testów i ich granice: WERYFIKACJA-PL.txt.
+Instrukcja: INSTRUKCJA-PL.txt. W tytule okna ma być 0.3.0 RC2.

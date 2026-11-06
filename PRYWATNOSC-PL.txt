@@ -1,5 +1,5 @@
-MTZ — ZBIERACZ LOGÓW MINECRAFTA
-Zakres danych w wersji 0.3.0-rc.1
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA
+Zakres danych w wersji 0.3.0-rc.2
 
 ZBIERANIE LOKALNE
 Zbieracz pracuje na wybranej instancji Minecrafta i zapisuje archiwa na

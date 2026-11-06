@@ -1,0 +1,75 @@
+name: Launcher checks on Windows PowerShell 5.1
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: launcher-checks-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  launcher:
+    runs-on: windows-2022
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: Check out the exact source revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Confirm Windows PowerShell 5.1 and parse production scripts
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($PSVersionTable.PSEdition -ne 'Desktop' -or
+              $PSVersionTable.PSVersion.Major -ne 5 -or
+              $PSVersionTable.PSVersion.Minor -ne 1) {
+            throw 'This job requires Windows PowerShell Desktop 5.1.'
+          }
+          Write-Output ('PowerShell: ' + $PSVersionTable.PSVersion + ' / ' + $PSVersionTable.PSEdition)
+          Write-Output ('Operating system: ' + [Environment]::OSVersion.VersionString)
+          Write-Output 'CI scope: production syntax plus launcher regression with synthetic temporary files.'
+          Write-Output 'COM shortcuts and GUI startup remain mocked. This is Windows Server 2022, not a Windows 10/11 desktop acceptance test.'
+          Write-Output 'This job does not validate the user antivirus, downloaded ZIP handling, interactive WinForms, or Opera integration.'
+
+          $scripts = @(
+            'Launch-MTZ.ps1', 'Instaluj-MTZ-Logi.ps1', 'MTZ-Logi.ps1',
+            'core.ps1', 'session.ps1', 'full-bundle.ps1',
+            'Collect-Worker.ps1', 'Restore-MTZ-Paczka.ps1'
+          )
+          foreach ($relative in $scripts) {
+            $path = Join-Path $env:GITHUB_WORKSPACE $relative
+            if (-not [IO.File]::Exists($path)) { throw ('Missing production script: ' + $relative) }
+            $tokens = $null
+            $parseErrors = $null
+            [void][Management.Automation.Language.Parser]::ParseFile($path, [ref]$tokens, [ref]$parseErrors)
+            if (@($parseErrors).Count -gt 0) {
+              $parseErrors | ForEach-Object { Write-Output ($relative + ': ' + $_.Message) }
+              throw ('Windows PowerShell 5.1 rejected the syntax of ' + $relative)
+            }
+            Write-Output ('PASS parser: ' + $relative)
+          }
+
+      - name: Run launcher regression without installing or opening the application
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $reportDirectory = Join-Path $env:RUNNER_TEMP 'mtz-launcher-checks'
+          [void][IO.Directory]::CreateDirectory($reportDirectory)
+          & .\walidacja-launchera\Test-Launcher.ps1 -ApplicationDirectory $env:GITHUB_WORKSPACE -OutputDirectory $reportDirectory
+          $reportPath = Join-Path $reportDirectory 'launch-results.json'
+          if (-not [IO.File]::Exists($reportPath)) { throw 'The launcher test did not produce its result report.' }
+          $reportText = [IO.File]::ReadAllText($reportPath)
+          $report = $reportText | ConvertFrom-Json
+          if ($report.status -ne 'PASS' -or [int]$report.checks -le 0) { throw 'The launcher test report does not confirm success.' }
+          Write-Output $reportText
+          Write-Output 'PASS: launcher regression completed; antivirus resolution and desktop acceptance remain unverified.'
+          # Expected failing child-process fixtures may leave LASTEXITCODE nonzero.
+          # All assertions and report checks above must succeed before this exit.
+          exit 0

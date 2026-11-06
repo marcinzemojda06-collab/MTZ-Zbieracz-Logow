@@ -1,4 +1,4 @@
-﻿# MTZ 0.3.0-rc.1. Load core.ps1 before this file. PowerShell 5.1 / .NET 4.5+.
+﻿# MTZ 0.3.0-rc.2. Load core.ps1 before this file. PowerShell 5.1 / .NET 4.5+.
 Set-StrictMode -Version 2.0
 Add-Type -AssemblyName System.IO.Compression
 
@@ -367,7 +367,7 @@ function New-MtzFullBundle {
         if ($skipped.Count -gt 0) { $warnings.Add('Pelna paczka jest NIEKOMPLETNA: pominieto ' + $skipped.Count + ' plikow lub folderow. Szczegoly: full-manifest.json / Skipped.') }
         Send-MtzCaptureProgress $ProgressCallback 94 'Zapisywanie manifestu' 'Przygotowywanie spisu i sum kontrolnych paczki.' -CompletedFiles $verifiedFiles -TotalFiles $verifyTotal -Force
         $manifest = [ordered]@{
-            Format = 'MTZ-FullBundle-1'; Version = '0.3.0-rc.1'; BundleId = $bundleId
+            Format = 'MTZ-FullBundle-1'; Version = '0.3.0-rc.2'; BundleId = $bundleId
             CreatedUtc = [DateTime]::UtcNow.ToString('o'); InstanceName = $info.DisplayName
             SessionStartedUtc = $(if ($SessionStartedUtc -ne [DateTime]::MinValue) { $SessionStartedUtc.ToUniversalTime().ToString('o') } else { $null })
             Complete = ($skipped.Count -eq 0); FileCount = $files.Count; TotalSourceBytes = $totalBytes
