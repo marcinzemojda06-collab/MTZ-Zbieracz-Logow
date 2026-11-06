@@ -4,13 +4,67 @@
 
 Przy uruchamianiu instalatora zgłoszono dwa komunikaty:
 
-- program ochronny: **„Suspicious PowerShell script activity”** dla `Launch-MTZ.ps1`;
+- program ochronny **RAV Endpoint Protection (ReasonLabs)**:
+  **„Suspicious PowerShell script activity”** dla `Launch-MTZ.ps1`,
+  nazwa wykrycia **`Risk.Powershell.Script.Gen.D!YST`**;
 - instalator: **`CommandNotFoundException`**, wskazujący ten sam plik.
 
 Te komunikaty wskazują na powiązany problem z dostępnością launchera.
-Sam zrzut nie ustala, czy plik został usunięty, poddany kwarantannie,
-czy odmówiono jego odczytu lub wykonania. Nie identyfikuje też jednoznacznie
-producenta programu ochronnego. Przyczyna alarmu pozostaje otwarta.
+Szczegóły zdarzenia pokazują status **„Wymagane działanie”**. Nie ustalają,
+czy plik został usunięty, poddany kwarantannie, czy odmówiono jego odczytu
+lub wykonania. Producent został potwierdzony dodatkowym zrzutem nazwy
+produktu. Przyczyna wykrycia pozostaje otwarta.
+
+## Potwierdzone porównanie pliku
+
+Skrót SHA-1 widoczny w zgłoszeniu z 6 listopada 2026 r. jest zgodny
+z `Launch-MTZ.ps1` w obu archiwach 0.3.0 RC1: aplikacji i źródeł.
+Zgłoszony plik ma 12 870 bajtów.
+
+```text
+SHA-1:   27ac9b7d580b3a61c5c9eacbace183e264d53142
+SHA-256: c602575082e84831389501e88464b9032e0f0378f9a6f0a0262c95bafea2820a
+```
+
+[Niezmienna wersja kodu zgłoszonego launchera](https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow/blob/230d17c8a243824a2bfbf2e69c490d890c771d0c/Launch-MTZ.ps1).
+
+Porównanie identyfikuje wersję pliku; nie jest werdyktem bezpieczeństwa.
+Launcher w gałęzi przygotowanej poprawki ma zmienioną zawartość i inne
+skróty. Zmiana skrótu również nie potwierdza rozwiązania wykrycia.
+
+Historia zawiera też starsze wpisy z 1 listopada dotyczące pliku CMD,
+pliku VBS i dwóch skrótów LNK. Zgodność zawartości tych starszych plików
+z dostępnymi archiwami nie została potwierdzona. Archiwa RC1 nie zawierają
+plików VBS; skrót LNK tworzy instalator. Starszych zgłoszeń nie należy
+traktować jako wyników skanowania obecnego RC1.
+
+## Co ustalono w kodzie
+
+Przegląd pełnego zgłoszonego launchera potwierdził kopiowanie lokalnych
+plików aplikacji, tworzenie skrótu oraz uruchamianie PowerShella z ukrytą
+konsolą i parametrem `-ExecutionPolicy Bypass`. W tym pliku nie znaleziono
+mechanizmu pobierania plików z internetu, kodowanego polecenia ani zmiany
+konfiguracji antywirusa. Ogólny opis alarmu wymienia przykłady zachowań;
+nie jest zapisem wykonania każdego z tych działań.
+
+Opis parametrów w dokumentacji Microsoftu:
+[powershell.exe](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1)
+oraz [polityki wykonywania](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1).
+Parametr polityki dotyczy uruchamianej sesji. Sam nie wyłącza antywirusa.
+Dokładna reguła, która wywołała wykrycie RAV, nie została potwierdzona.
+
+## Kontakt z producentem ochrony
+
+ReasonLabs udostępnia [ogólny formularz pomocy](https://reasonlabs.com/contact-us)
+oraz adres `support@reasonlabs.com`. Jest to zweryfikowany punkt kontaktowy;
+nie potwierdzono osobnego publicznego formularza dla tego wykrycia ani
+zasad przesyłania próbek. O sposób bezpiecznego dostarczenia próbki należy
+zapytać wsparcie.
+
+[Opis techniczny do zgłoszenia](ZGLOSZENIE-RAV.txt) zawiera identyfikator
+wykrycia, skróty pliku i odnośnik do jego niezmiennego kodu. To przygotowany
+materiał; zgłoszenie nie zostało wysłane i nie ma jeszcze odpowiedzi
+producenta. Materiał nie zawiera zrzutów, prywatnych ścieżek ani logów gry.
 
 ## Co zrobić po takim komunikacie
 

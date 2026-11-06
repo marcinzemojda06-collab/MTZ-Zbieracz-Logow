@@ -1,0 +1,71 @@
+MTZ Zbieracz Logow — RAV Endpoint Protection detection review
+Prepared on 2026-11-06. Draft for review; not submitted to ReasonLabs.
+
+Proposed subject:
+Review request: Risk.Powershell.Script.Gen.D!YST in MTZ Zbieracz Logow 0.3.0 RC1
+
+Purpose
+Please investigate whether this is an erroneous detection and advise how
+to provide the original sample through your preferred submission channel.
+The detection has not been confirmed to be a false positive.
+
+Reported product: RAV Endpoint Protection (ReasonLabs)
+Displayed detection: Suspicious PowerShell script activity
+Detection name: Risk.Powershell.Script.Gen.D!YST
+Affected file: Launch-MTZ.ps1
+Application release: MTZ Zbieracz Logow 0.3.0 RC1
+Detection date shown: 2026-11-06
+Displayed status: Wymagane dzialanie (Action required)
+Exact RAV version and definition version: not supplied
+Completed antivirus action (e.g. quarantine or deletion): not confirmed
+
+Sample identity
+Size: 12870 bytes
+SHA-1: 27ac9b7d580b3a61c5c9eacbace183e264d53142
+SHA-256: c602575082e84831389501e88464b9032e0f0378f9a6f0a0262c95bafea2820a
+
+The SHA-1 shown in the alert matches the launcher in the original RC1
+runtime and source ZIPs. Hash agreement identifies the sample, not safety.
+
+Immutable source of the reported file:
+https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow/blob/230d17c8a243824a2bfbf2e69c490d890c771d0c/Launch-MTZ.ps1
+
+Application and launcher behavior
+MTZ Zbieracz Logow is a Windows desktop tool for collecting and packaging
+Minecraft logs and selected installation files. This launcher stages and
+copies application files locally, creates a desktop shortcut through
+WScript.Shell, and starts the PowerShell WinForms application.
+
+Static review of the entire reported launcher found:
+- Start-Process with WindowStyle Hidden;
+- PowerShell arguments containing WindowStyle Hidden and ExecutionPolicy Bypass;
+- a shortcut targeting PowerShell with those arguments;
+- no file-download code, encoded command, Invoke-Expression, antivirus
+  configuration change, or AMSI bypass in this launcher.
+
+These are observations about the source, not a determination of the
+antivirus rule or a certification of the application. The generic alert
+description mentions downloading among possible behaviors; the supplied
+evidence does not establish that this launcher downloaded anything.
+
+Observed failure and scope
+An installation attempt reported CommandNotFoundException when trying to
+invoke Launch-MTZ.ps1. The evidence does not establish the exact antivirus
+action or conclusively prove that it caused the unavailable-file error.
+
+A separate draft change checks required files before installation and
+improves failure handling. It does not constitute antivirus clearance.
+The changed launcher has different bytes; please review the original
+sample identified by the hashes and immutable source above.
+
+Please confirm:
+1. How to submit the original sample for your analysis.
+2. Whether the reported detection is accurate or a false positive.
+3. Any relevant product/definition update after your analysis.
+
+Official contact verified on 2026-11-06:
+https://reasonlabs.com/contact-us
+support@reasonlabs.com
+
+No sample or message has been sent by the assistant. This draft contains
+no account credentials, personal filesystem paths, screenshots, or game logs.
