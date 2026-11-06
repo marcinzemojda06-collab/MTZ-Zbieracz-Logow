@@ -1,67 +1,81 @@
 MTZ Zbieracz Logow — RAV Endpoint Protection detection review
-Prepared on 2026-11-06. Draft for review; not submitted to ReasonLabs.
+Updated on 2026-11-07. Draft for review; not submitted to ReasonLabs.
+Project status: Experimental / Early Access.
 
 Proposed subject:
-Review request: Risk.Powershell.Script.Gen.D!YST in MTZ Zbieracz Logow 0.3.0 RC1
+Review request: Risk.Powershell.Script.Gen.D!YST in MTZ Zbieracz Logow RC1 and RC2
 
 Purpose
-Please investigate whether this is an erroneous detection and advise how
-to provide the original sample through your preferred submission channel.
-The detection has not been confirmed to be a false positive.
+Please investigate whether these detections are accurate and advise how
+to provide the exact samples through your preferred submission channel.
+Neither detection has been confirmed to be a false positive.
 
 Reported product: RAV Endpoint Protection (ReasonLabs)
 Displayed detection: Suspicious PowerShell script activity
 Detection name: Risk.Powershell.Script.Gen.D!YST
-Affected file: Launch-MTZ.ps1
-Application release: MTZ Zbieracz Logow 0.3.0 RC1
-Detection date shown: 2026-11-06
+Affected file in both versions: Launch-MTZ.ps1
+Exact RAV product and definition versions: not supplied
 Displayed status: Wymagane dzialanie (Action required)
-Exact RAV version and definition version: not supplied
-Completed antivirus action (e.g. quarantine or deletion): not confirmed
+Completed quarantine or deletion: not confirmed
 
-Sample identity
+CURRENT SAMPLE — 0.3.0 RC2
+Detection time displayed: 2026-11-06 23:54 (user local time)
+Observed location: the extracted application directory in Downloads
+Size: 14130 bytes
+SHA-1: 365ee1b5d2daecf6f1336695bf693db45e986c3b
+SHA-256: 045e5b55bd32d534fa912632c49c5daf8d378e98280e2137393abc4d311efc8e
+Immutable source:
+https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow/blob/6717527b1c4612f86537a7df339e832badd8befa/Launch-MTZ.ps1
+
+The SHA-1 shown in the new RAV alert exactly matches the launcher extracted
+from the delivered RC2 ZIP. Windows Explorer refused a copy operation on
+Launch-MTZ.ps1 with error 0x800700E1. This confirms the new detection covers
+the RC2 sample, not only the historical RC1 sample.
+
+RC2 archive identity:
+File: MTZ-Zbieracz-Logow-Podmiana-0.3.0-rc.2.zip
+Size: 77353 bytes
+SHA-256: 19b77649795f1b159aa7518ed6107eb3d2697b8c9dddee9e4b7f8222eeb8210c
+
+HISTORICAL SAMPLE — 0.3.0 RC1
+Detection date shown: 2026-11-06
 Size: 12870 bytes
 SHA-1: 27ac9b7d580b3a61c5c9eacbace183e264d53142
 SHA-256: c602575082e84831389501e88464b9032e0f0378f9a6f0a0262c95bafea2820a
-
-The SHA-1 shown in the alert matches the launcher in the original RC1
-runtime and source ZIPs. Hash agreement identifies the sample, not safety.
-
-Immutable source of the reported file:
+Immutable source:
 https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow/blob/230d17c8a243824a2bfbf2e69c490d890c771d0c/Launch-MTZ.ps1
 
-Application and launcher behavior
+The original alert SHA-1 matches the launcher in the RC1 runtime and source
+ZIPs. An installation attempt also reported CommandNotFoundException for
+this file; the original evidence did not establish the exact AV action.
+
+APPLICATION AND LAUNCHER BEHAVIOR
 MTZ Zbieracz Logow is a Windows desktop tool for collecting and packaging
-Minecraft logs and selected installation files. This launcher stages and
+Minecraft logs and selected installation files. The launcher stages and
 copies application files locally, creates a desktop shortcut through
 WScript.Shell, and starts the PowerShell WinForms application.
 
-Static review of the entire reported launcher found:
+Static review of both complete launchers found:
 - Start-Process with WindowStyle Hidden;
 - PowerShell arguments containing WindowStyle Hidden and ExecutionPolicy Bypass;
 - a shortcut targeting PowerShell with those arguments;
 - no file-download code, encoded command, Invoke-Expression, antivirus
-  configuration change, or AMSI bypass in this launcher.
+  configuration change, or AMSI bypass in these launchers.
 
-These are observations about the source, not a determination of the
-antivirus rule or a certification of the application. The generic alert
-description mentions downloading among possible behaviors; the supplied
-evidence does not establish that this launcher downloaded anything.
+These observations do not certify the complete application or identify the
+actual detection rule. The generic alert description mentions downloading
+among possible behaviors; the evidence does not establish such activity.
+Hash agreement identifies each sample and is not a security verdict.
 
-Observed failure and scope
-An installation attempt reported CommandNotFoundException when trying to
-invoke Launch-MTZ.ps1. The evidence does not establish the exact antivirus
-action or conclusively prove that it caused the unavailable-file error.
-
-A separate draft change checks required files before installation and
-improves failure handling. It does not constitute antivirus clearance.
-The changed launcher has different bytes; please review the original
-sample identified by the hashes and immutable source above.
+RC2 adds required-file preflight checks and validates a staged application
+before replacing the existing installation. Startup flags remain unchanged.
+Its passing code tests do not constitute antivirus clearance. The new RC2
+copy block remains unresolved. Historical test results are preserved.
 
 Please confirm:
-1. How to submit the original sample for your analysis.
-2. Whether the reported detection is accurate or a false positive.
-3. Any relevant product/definition update after your analysis.
+1. How to submit these exact samples for your analysis.
+2. Whether each detection is accurate or a false positive.
+3. Any relevant product or definition update following your analysis.
 
 Official contact verified on 2026-11-06:
 https://reasonlabs.com/contact-us

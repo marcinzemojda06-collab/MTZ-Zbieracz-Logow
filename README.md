@@ -1,14 +1,38 @@
 # MTZ — Zbieracz logów Minecrafta
 
-**0.3.0-rc.2 — kandydat do wydania na Windows 10/11, paczka do podmiany aplikacji.**
+**Experimental / Early Access — wersja eksperymentalna we wczesnym dostępie.**
+
+**Nie zaleca się pobierania ani instalowania tej wersji do czasu wydania pełnej, stabilnej wersji.**
+
+Aktualna wersja źródeł: **0.3.0-rc.2**, Windows 10/11.
+Projekt jest nadal rozwijany; funkcje i sposób instalacji mogą się zmieniać.
+To wersja testowa, która nie została zatwierdzona jako stabilna.
+
+> [!WARNING]
+> **Potwierdzona blokada RC2 przez RAV Endpoint Protection.**
+> Zgłoszenie z 6 listopada 2026 r., godz. 23:54, dotyczy `Launch-MTZ.ps1`
+> z dostarczonej paczki RC2. Tożsamość pliku potwierdzono skrótem SHA-1.
+> Przyczyna wykrycia i jego prawidłowość pozostają niewyjaśnione.
+> Poprawki instalatora i zaliczone testy kodu nie potwierdzają akceptacji przez RAV.
+> Jeśli ochrona blokuje plik, przerwij instalację lub podmianę.
+
+Status aktualny na **7 listopada 2026 r.**:
+[szczegóły znanego problemu](docs/URUCHAMIANIE-I-OCHRONA.md)
+oraz [status projektu](PROJECT-STATUS.json).
+Repozytorium udostępnia kod źródłowy. GitHub Release nie został opublikowany.
 
 Lokalny program do zbierania diagnostyki Minecraft Java i tworzenia pełnych
 kopii instancji. Okno korzysta z Windows Forms oraz Windows PowerShell 5.1.
 
-## Podmiana obecnej aplikacji
+## Instalacja i podmiana podczas testów
 
-Pobierz przygotowaną paczkę `MTZ-Zbieracz-Logow-Podmiana-0.3.0-rc.2.zip`
-i rozpakuj ją. Zamknij okno zbieracza i poczekaj na zakończenie jego pracy.
+Poniższa instrukcja opisuje wcześniej przygotowaną paczkę testową
+`MTZ-Zbieracz-Logow-Podmiana-0.3.0-rc.2.zip`. Na komputerze z potwierdzoną
+blokadą ochrony aktualizację należy przerwać. Zachowaj ustawienia i archiwa;
+po częściowym nadpisaniu nie uruchamiaj mieszanki plików różnych wersji.
+
+Jeśli masz kompletną paczkę testową, rozpakuj ją. Zamknij okno zbieracza
+i poczekaj na zakończenie jego pracy.
 W **Win + R** otwórz:
 
 ```text
@@ -74,9 +98,10 @@ bieżąca Opera i zachowanie RAV wymagają osobnego sprawdzenia.
 Historyczne raporty RC1 pozostają w swoim katalogu, bez przepisywania
 ich jako wyników RC2. Zakres: [WERYFIKACJA-PL.txt](WERYFIKACJA-PL.txt).
 
-**Wykrycie wcześniejszego launchera przez RAV Endpoint Protection jest
-nadal niewyjaśnione.** Poprawka dostępności plików nie jest potwierdzeniem
-akceptacji aplikacji przez RAV. Opis:
+**Wykrycia launchera RC1 oraz RC2 przez RAV Endpoint Protection pozostają
+niewyjaśnione.** Nowy raport potwierdza, że blokada obejmuje również plik
+RC2 wypakowany do Pobranych. Materiał do weryfikacji przez producenta
+jest przygotowany, ale nie został wysłany. Opis:
 [Problemy uruchamiania i komunikaty ochrony](docs/URUCHAMIANIE-I-OCHRONA.md).
 
 ## Testy kodu
@@ -115,8 +140,13 @@ Builder nie publikuje plików przez Internet.
 
 Repozytorium:
 [marcinzemojda06-collab/MTZ-Zbieracz-Logow](https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow).
+Status publikacyjny: **Experimental / Early Access**. Ewentualne wydanie
+GitHub należy oznaczyć jako **pre-release** i opisać znane ograniczenia.
 Przygotowanie paczki do pobrania nie oznacza utworzenia GitHub Release.
 Planowany tag tego kandydata: `v0.3.0-rc.2`.
+Oznaczenie projektu nie zmienia numeru ani zawartości wcześniej przekazanego
+ZIP-a. `VERSION.json` i raporty weryfikacji zachowują historyczne dane RC2;
+bieżący status rozwoju i blokady opisuje `PROJECT-STATUS.json`.
 Materiały: [PUBLIKACJA-PL.txt](PUBLIKACJA-PL.txt).
 
 ## Licencja

@@ -1,9 +1,14 @@
-﻿MTZ ZBIERACZ — MATERIAŁY DO PUBLIKACJI 0.3.0-rc.2
+﻿MTZ ZBIERACZ — EXPERIMENTAL / EARLY ACCESS
+Materiały dotyczące 0.3.0-rc.2 • aktualizacja statusu: 7 listopada 2026
 
 Repozytorium: https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow
-Wersja: 0.3.0-rc.2 (RC2), kandydat do wydania
+Wersja: 0.3.0-rc.2 (RC2)
+Status projektu: Experimental / Early Access — wersja eksperymentalna we wczesnym dostępie
 Planowany tag: v0.3.0-rc.2
-Typ: pre-release / wersja testowa
+Typ ewentualnego wydania: pre-release / wersja testowa
+Wydanie stabilne: nie
+Zalecenie dla pobierających: Nie zaleca się pobierania ani instalowania tej wersji do czasu wydania pełnej, stabilnej wersji.
+GitHub Release: nieopublikowany
 Utworzenie ZIP-a lokalnie nie tworzy ani nie publikuje GitHub Release.
 
 OPIS WYDANIA
@@ -25,8 +30,12 @@ a wysłanie wiadomości lub załącznika pozostaje czynnością użytkownika.
 
 Weryfikacja podmiany obejmuje automatyczne testy launchera i Windows
 PowerShell 5.1, z jawnymi ograniczeniami opisanymi w WERYFIKACJA-PL.txt.
-Interaktywny test GUI i akceptacja RAV pozostają niepotwierdzone.
-Wykrycie wcześniejszego launchera przez RAV nie jest uznane za rozwiązane.
+Pełny interaktywny test GUI pozostaje niepotwierdzony.
+RAV Endpoint Protection zablokował także Launch-MTZ.ps1 z paczki RC2.
+Zgodność SHA-1 potwierdzono ze zgłoszeniem z 6 listopada 2026, godz. 23:54.
+Przyczyna wykrycia pozostaje otwarta; nie potwierdzono fałszywego alarmu.
+Na komputerze, na którym ochrona blokuje plik, należy przerwać podmianę.
+Szczegóły: docs/URUCHAMIANIE-I-OCHRONA.md i PROJECT-STATUS.json.
 
 PLIKI
 Główny plik: MTZ-Zbieracz-Logow-Podmiana-0.3.0-rc.2.zip
@@ -38,9 +47,17 @@ PRZYGOTOWANIE
 2. Sprawdź zakres i sumy plików w release-validation.json.
 3. Zbuduj paczkę poleceniem python tools/build-release.py.
 4. Zweryfikuj gotowy ZIP i zawartość release-manifest.json.
-5. Jeżeli publikujesz przez GitHub Release, przygotuj wydanie pre-release
-   dla właściwej rewizji i dołącz dokładnie sprawdzoną paczkę z jej sumą.
+5. Przed publikacją rozstrzygnij zgłoszenie blokady ochrony. Ewentualne
+   wydanie GitHub oznacz jako pre-release i Experimental / Early Access.
+   Opisz znane ograniczenia oraz rzeczywisty zakres testów. Dołącz dokładnie
+   sprawdzoną paczkę dla właściwej rewizji z jej sumą kontrolną.
 6. Udostępnij rzeczywisty adres opublikowanego wydania.
 
 Źródła i dystrybucja programu nie zawierają zebranych logów Minecrafta,
 światów, danych kont ani katalogu %LOCALAPPDATA%\MTZ-Logi użytkownika.
+
+AKTUALIZACJA STATUSU REPOZYTORIUM
+Oznaczenia Experimental / Early Access opisują etap rozwoju projektu.
+Numer 0.3.0-rc.2 i archiwalne raporty pozostają bez zmian. Zmiana dokumentacji
+nie tworzy nowej paczki, nie potwierdza usunięcia alarmu i nie zastępuje
+wyników testów innymi. Bieżące dane statusu: PROJECT-STATUS.json.
