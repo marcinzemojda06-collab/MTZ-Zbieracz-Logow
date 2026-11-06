@@ -1,0 +1,36 @@
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA
+Zmiany 0.3.0-rc.1 → 0.3.0-rc.2 • 6 listopada 2026
+
+INSTALACJA
+- Oba pliki CMD sprawdzają wymagane pliki przed uruchomieniem PowerShella.
+- Brak pliku, pusty plik lub katalog zamiast pliku zatrzymuje próbę
+  z czytelnym komunikatem i niezerowym kodem wyjścia.
+- Instaluj-MTZ-Logi.ps1 sprawdza literalną ścieżkę Launch-MTZ.ps1
+  i możliwość odczytu tego pliku.
+- Instalator kontroluje także przygotowaną kopię przed przeniesieniem
+  dotychczasowego katalogu aplikacji. Niekompletna kopia nie zastępuje
+  wcześniejszej aplikacji.
+- Poprzednia aplikacja, ustawienia i archiwa są uwzględnione w testach
+  odmowy aktualizacji. Ręczne kopiowanie plików pozostaje osobną ścieżką
+  i nie korzysta z automatycznej kopii instalatora.
+
+PACZKA DO PODMIANY
+- Jeden ZIP z kompletnym folderem Aplikacja oraz PODMIANA-PL.txt.
+- Instrukcja zawiera dokładny folder docelowy, polecenie Win + R,
+  podmianę zawartości bez Aplikacja\Aplikacja i pierwszy start z nowego CMD.
+- Numer RC2 jest widoczny w oknie, VERSION.json oraz manifestach
+  diagnostyki i pełnej kopii.
+- Szeroki pasek procentowy, anulowanie, zachowanie ustawień i wcześniejsze
+  funkcje zbierania są częścią tej aplikacji; nie zmieniano ich logiki
+  w ramach poprawki instalatora.
+
+WERYFIKACJA
+Builder RC2 wymaga świeżych wyników testu launchera lokalnie i w Windows
+PowerShell 5.1, udanego przebiegu CI dla wskazanej rewizji oraz sum SHA-256
+wszystkich plików aplikacji i instrukcji podmiany. Historyczne raporty RC1
+pozostają zachowane jako wyniki wcześniejszego wydania.
+
+RAV ENDPOINT PROTECTION
+Ta wersja nie deklaruje rozwiązania wykrycia Risk.Powershell.Script.Gen.D!YST.
+Nie zmienia flag uruchamiania PowerShella, konfiguracji ochrony ani
+kwarantanny. Wyniki testów instalatora nie są wynikiem skanowania RAV.

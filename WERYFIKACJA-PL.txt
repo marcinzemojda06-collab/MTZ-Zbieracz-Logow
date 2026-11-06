@@ -1,81 +1,58 @@
-﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA 0.3.0-rc.1
-Weryfikacja kandydata do wydania • 6 listopada 2026
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA 0.3.0-rc.2
+Zakres weryfikacji paczki do podmiany • 6 listopada 2026
 
-WYNIK
-Wszystkie niżej wymienione zestawy automatyczne zakończyły się powodzeniem.
-Zestawy wykonano na aktualnych plikach produkcyjnych. Sumy SHA-256
-porównano ponownie przed spakowaniem.
-Nie jest to potwierdzenie pełnego działania na Windows.
+WARUNKI UTWORZENIA PACZKI RC2
+Builder RC2 wymaga nowego validation/release-0.3.0-rc.2/release-validation.json.
+Sprawdza świeży wynik lokalnego testu launchera oraz wynik uruchomiony
+przez Windows PowerShell 5.1. Dowód Windows obejmuje także zakończony
+powodzeniem przebieg GitHub Actions dla wskazanej rewizji kodu.
 
-WYKONANE TESTY
-- Diagnostyka i filtrowanie tekstu: 23/23 testy.
-- Pełne kopie i integracja z odtwarzaniem: 120 sprawdzeń.
-- Nowe scenariusze anulowania, błędów zapisu i sprzątania: 13/13,
-  obejmujące 54 sprawdzenia.
-- Launcher i instalator: 55/55 sprawdzeń.
-- Stan sesji i rozpoznawanie argumentów procesu: 47/47 sprawdzeń.
-- Odtwarzanie, uszkodzone manifesty i sumy kontrolne: 57/57 sprawdzeń.
-- Lokalny most HTTP — kompilacja C# i rzeczywiste połączenia TCP: 45/45.
-- Logika rozszerzenia: 22/22.
-- Formularz i wyścigi asynchroniczne rozszerzenia: 15/15.
-- Logika GUI: 21/21 przypadków, 121 sprawdzeń.
-- Postęp oraz rzeczywiste procesy pakowania: 10/10 przypadków,
-  477 sprawdzeń.
+Sumy plików w obu raportach muszą odpowiadać pakowanym plikom launchera.
+Zestaw SHA-256 w podsumowaniu wydania musi obejmować wszystkie pliki
+aplikacji oraz osobną instrukcję podmiany. Niekompletny raport, brak
+wyniku testu, nieudany CI albo zmieniony plik zatrzymuje pakowanie.
+Dane utworzonego archiwum są powiązane z rewizją i adresem CI w
+release-manifest.json. Konkretne wyniki znajdują się w źródłach wydania.
 
-Przypadki i pojedyncze asercje są różnymi jednostkami.
-Nie należy sumować tych liczb jako niezależnych testów użytkownika.
+ZAKRES TESTU LAUNCHERA
+Kontrola obejmuje kompletność danych wejściowych, brak lub odmowę odczytu
+pliku, utratę pliku przygotowanej instalacji, blokadę podczas pracy
+aplikacji i równoczesnej aktualizacji, zachowanie ustawień i archiwów
+oraz czytelne zgłoszenie odmowy. Przypadki Windows obejmują uruchomienie
+CMD dla niekompletnej paczki. Parsowanie skryptów nie jest uruchomieniem
+każdej funkcji interfejsu.
 
-CO POTWIERDZONO
-- Szeroki pasek pokazuje wykonaną pracę; 100% wymaga poprawnego wyniku.
-- Anulowanie pełnej kopii z plikiem 32 MiB nastąpiło w trakcie etapu
-  Kopiowanie i kompresja, przy 19%. Proces zakończył się kodem3.
-  Jego części usunięto, oryginał i wcześniejsza paczka pozostały.
-- Niepoprawne i niepełne archiwa nie otrzymują pozornego pełnego sukcesu.
-- Sprzeczny lub błędnie zapisany wynik anulowania jest odrzucany.
-- Błąd usuwania pozostałości jest przekazywany w uwagach.
-- Nowa instalacja wybiera Diagnostics, stary wybór Full jest zachowany.
-- Usunięcie adresu rozmowy jest zapamiętywane.
-- Wykrywanie profili nie skanuje całego dysku i nie wybiera profilu samo.
-- Blokadę aplikacji sprawdzono także pomiędzy dwoma prawdziwymi procesami.
-- Aktualizacja zachowuje ustawienia i archiwa; błąd nie udaje sukcesu.
-- Błędna kopia nie pozostawia częściowo odtworzonego folderu docelowego.
-- Niepoprawne nagłówki HTTP i niepełna odpowiedź ZIP są odrzucane.
-- Zmiana rozmowy lub zamknięcie panelu nie dołącza pliku do innej rozmowy.
-- Rozszerzenie nie wysyła wiadomości i nie zmienia istniejącego szkicu.
+OPERACJE RĘCZNE A INSTALATOR
+Ręczna podmiana z PODMIANA-PL.txt polega na skopiowaniu zawartości Aplikacja.
+Nie uruchamia przed kopiowaniem kontroli instalatora ani automatycznej
+kopii poprzedniej aplikacji. Wymaga zamknięcia programu i skopiowania
+kompletu plików oraz podfolderów. Pierwszy start z nowego CMD sprawdza
+kompletność plików przed uruchomieniem aplikacji.
 
-ŚRODOWISKO I GRANICE
-PowerShell7.4.13 na Linuksie; Node24.22.1; jsdom30.1.3.
-Operacje na ZIP-ach, haszowanie, pliki, blokady i procesy PowerShell
-były rzeczywiste. Kontrolki WinForms, potwierdzenia dialogu, COM skrótu,
-uruchamianie Windows GUI i dane CIM były zastąpione jawnymi atrapami.
-Atrapy testują logikę; nie renderują aplikacji Windows.
-Nie wykonano testu w zalogowanej Operze ani skanu używanym antywirusem.
-Brak podpisu cyfrowego i weryfikacji SmartScreen nie jest zastąpiony
-sumą SHA-256 — suma pozwala rozpoznać konkretny plik.
+Uruchomienie Instaluj-MTZ-Logi.cmd z osobnego wypakowanego folderu korzysta
+z katalogu przygotowawczego, kontroli kompletności i Kopie-aplikacji.
+To wariant aktualizacji z automatyczną kopią wcześniejszego programu.
 
-PRZED OZNACZENIEM WYDANIA JAKO STABILNE
-1. Windows PowerShell5.1: pierwsza instalacja i aktualizacja, uruchomienie
-   przez rzeczywisty skrót, zachowane ustawienia i archiwa.
-2. Okno Windows: czytelność przy używanym skalowaniu ekranu, przyciski,
-   wybór profilu, procent postępu, Anuluj i zamykanie podczas pracy.
-3. Sesja Minecrafta: zakończenie gry i automatyczna diagnostyka z właściwego
-   profilu. Sprawdzenie zawartości ZIP oraz odtworzenie małej kopii testowej.
-4. Opcjonalna Opera: dołączenie do właściwej rozmowy i brak samodzielnego
-   wysłania wiadomości. Ręczne dołączanie musi pozostać dostępne.
-5. Ochrona systemu: wcześniejszy launcher był zgłaszany przez antywirusa.
-   Nie potwierdzono usunięcia tego zgłoszenia dla nowego wydania.
-   Jeżeli plik zostanie zablokowany, zachowaj komunikat i pozostaw ochronę
-   włączoną; nie oznaczaj takiego wyniku jako zaliczonego testu.
+HISTORYCZNE WYNIKI RC1
+W validation/release-0.3.0-rc.1 zachowano wcześniejsze testy diagnostyki,
+pełnych kopii, odtwarzania, sesji, mostu HTTP, rozszerzenia i postępu.
+Nie przepisano ich jako nowych wyników RC2. Poprawka launchera przed RC2
+miała 68 sprawdzeń lokalnych oraz 70 na Windows PowerShell 5.1; RC2
+wymaga własnych dowodów dotyczących bieżących plików.
 
-STATUS PUBLIKACJI
-Przygotowano paczkę aplikacji, źródła, instrukcje i opis wydania.
-Nie utworzono publicznego repozytorium, strony pobierania ani wpisu
-w sklepie rozszerzeń. Proponowany tag: v0.3.0-rc.1 (pre-release).
-Publiczne wydanie stabilne wymaga rozstrzygnięcia powyższych kontroli.
+GRANICE
+Testy launchera używają rzeczywistych plików i blokad, lecz tworzenie
+skrótu przez COM oraz start GUI są symulowane. Windows CI nie jest pełną
+akceptacją pulpitu Windows 10/11, skalowania WinForms, OneDrive ani
+zalogowanej Opery. Interaktywne działanie okna i sesji Minecrafta wymaga
+sprawdzenia na komputerze docelowym.
 
-DOWODY
-Źródła zawierają validation/release-0.3.0-rc.1:
-core-audit-summary.json, launch-*.json, bridge-*.json,
-progress-ui.json, progress-engine.json, progress-review.json,
-release-core-results.json i release-validation.json.
-Pliki wykonania zapisują wynik procesu i sumy sprawdzanych źródeł.
+Wykrycie wcześniejszego launchera przez RAV Endpoint Protection pozostaje
+niewyjaśnione. Nie wykonano testu potwierdzającego akceptację RC2 przez RAV.
+W razie blokady zachowaj dokładny komunikat i nazwę pliku. Suma SHA-256
+identyfikuje bajty; nie zastępuje podpisu wydawcy ani oceny antywirusa.
+
+STATUS
+0.3.0-rc.2 to kandydat do wydania z poprawką instalatora i paczką podmiany.
+Repozytorium: https://github.com/marcinzemojda06-collab/MTZ-Zbieracz-Logow
+Utworzenie ZIP-a przez builder nie publikuje wydania GitHub Release.

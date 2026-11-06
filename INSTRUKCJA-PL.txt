@@ -1,5 +1,5 @@
 ﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA
-0.3.0-rc.1 • Windows 10/11 • 6 listopada 2026
+0.3.0-rc.2 • Windows 10/11 • 6 listopada 2026
 
 DO CZEGO SŁUŻY
 Program obserwuje wybraną instancję Minecraft Java i po zakończeniu sesji
@@ -11,29 +11,40 @@ Status: kandydat do wydania. Testy wykonane i brakujące opisuje
 WERYFIKACJA-PL.txt. Instrukcja skrócona jest w START-TUTAJ.txt.
 
 1. INSTALACJA I AKTUALIZACJA
-Wypakuj cały ZIP. Zamknij poprzednio uruchomiony zbieracz.
-Uruchom Uruchom-MTZ-Logi.cmd bez uprawnień administratora.
-Obydwa pliki CMD oraz Instaluj-MTZ-Logi.ps1 korzystają ze wspólnego,
-jawnego skryptu Launch-MTZ.ps1. Wszystkie muszą pozostać w jednym folderze.
+ZIP zawiera kompletny folder Aplikacja oraz osobny PODMIANA-PL.txt.
+Zamknij poprzednio uruchomiony zbieracz i poczekaj na zakończenie pracy.
 
-Aplikacja jest instalowana w:
+Przy ręcznej podmianie skopiuj całą zawartość Aplikacja z ZIP-a do:
   %LOCALAPPDATA%\MTZ-Logi\Aplikacja
-Skrót na pulpicie ma nazwę MTZ - Zbieracz logow.
-Program używa systemowego Windows PowerShell 5.1 i Windows Forms.
-Nie potrzebuje dodatkowej instalacji Javy do samego zbierania logów.
-Krótko może pojawić się okno konsoli podczas uruchamiania CMD.
+Zachowaj podfoldery bridge i rozszerzenie. Zatwierdź zastąpienie plików.
+Nie twórz dodatkowego poziomu Aplikacja\Aplikacja. Ustawienia i Paczki
+są obok tego folderu i nie są częścią podmienianego zestawu.
+Ręczna podmiana nie tworzy automatycznie kopii poprzedniej aplikacji.
+Pierwszy start wykonaj przez NOWY Uruchom-MTZ-Logi.cmd w docelowym folderze.
+Ten start odtworzy znany skrót pulpitu. Stary VBS i przypięte skróty nie
+są automatycznie aktualizowane. Tytuł okna powinien zawierać 0.3.0 RC2.
 
-Aktualizacja przygotowuje nową kopię programu i sprawdza skrypty przed
-podmianą. Poprzedni folder programu trafia do Kopie-aplikacji.
+Aby skorzystać z instalatora z kopią poprzedniego programu, wypakuj ZIP
+do osobnego folderu i uruchom jego Aplikacja\Instaluj-MTZ-Logi.cmd
+bez uprawnień administratora. Ten wariant działa też przy pierwszej
+instalacji. Instalator przygotowuje katalog, sprawdza kompletność plików
+i skrypty, a poprzedni program zachowuje w MTZ-Logi\Kopie-aplikacji.
 Ustawienia i archiwa pozostają poza podmienianym folderem.
 Nie uruchamiaj dwóch instalatorów równocześnie. Zbieracz i instalator
 sprawdzają blokady, aby nie podmienić programu podczas jego pracy.
 
-Ta paczka nie jest podpisanym instalatorem EXE.
-Wcześniejszy launcher był zgłaszany przez antywirusa użytkownika.
-Obecne zmiany nie są dowodem usunięcia tamtego wykrycia. Jeżeli ochrona
-zablokuje plik, pozostaw ją włączoną i zapisz dokładny komunikat oraz
-nazwę pliku do weryfikacji. Nie dodawaj automatycznie wyjątków.
+Oba CMD i Instaluj-MTZ-Logi.ps1 korzystają ze wspólnego Launch-MTZ.ps1.
+Wymagane pliki i podfoldery muszą być kompletne. Niekompletna paczka
+zostanie zatrzymana z komunikatem o niedostępnym pliku.
+Program używa systemowego Windows PowerShell 5.1 i Windows Forms.
+Nie potrzebuje dodatkowej instalacji Javy do samego zbierania logów.
+Krótko może pojawić się okno konsoli podczas uruchamiania CMD.
+
+Ta paczka nie jest podpisanym instalatorem EXE. Wykrycie wcześniejszego
+launchera przez RAV Endpoint Protection pozostaje niewyjaśnione.
+Jeżeli ochrona zablokuje rozpakowanie, podmianę albo uruchomienie pliku,
+przerwij próbę i zachowaj dokładny komunikat oraz nazwę pliku do analizy.
+Poprawka nie zmienia konfiguracji ochrony ani kwarantanny.
 
 2. WYBÓR INSTANCJI
 Wykryj profile sprawdza standardowy katalog profili CurseForge bieżącego

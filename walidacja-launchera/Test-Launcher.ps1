@@ -309,7 +309,7 @@ try {
 } finally { $installLock.Dispose() }
 Assert-MtzTest ([IO.File]::Exists((Join-Path $data 'instalacja.lock')) -and [IO.File]::Exists((Join-Path $data 'aplikacja.lock'))) 'Lock paths persist after release to avoid lock replacement race'
 $report = [ordered]@{
-    launcherRevision = '0.3.0-rc.1'; antivirusResolutionVerified = $false
+    launcherRevision = '0.3.0-rc.2'; antivirusResolutionVerified = $false
     status = 'PASS'; checks = $results.Count; checksPassed = @($results)
     runtime = $PSVersionTable.PSVersion.ToString(); platform = [Environment]::OSVersion.Platform.ToString()
     actualWindowsRun = ($env:OS -eq 'Windows_NT'); actualComShortcut = $false; emulatedShell = $true

@@ -480,7 +480,7 @@ function New-MtzDiagnosticBundle {
     $payloads.Add([pscustomobject]@{ Name = 'mods-inventory.json'; Bytes = $encoding.GetBytes($inventory) })
     $manifest = [ordered]@{
         format = 'mtz-diagnostics-1'
-        collectorVersion = '0.3.0-rc.1'
+        collectorVersion = '0.3.0-rc.2'
         createdUtc = [DateTime]::UtcNow.ToString('o')
         sessionStartedUtc = $(if ($SessionStartedUtc -ne [DateTime]::MinValue) { $SessionStartedUtc.ToUniversalTime().ToString('o') } else { $null })
         scope = 'Selected instance: latest.log, debug.log, up to 3 crash reports, mod filenames and sizes only.'

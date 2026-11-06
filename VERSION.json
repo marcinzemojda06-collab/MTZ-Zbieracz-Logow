@@ -1,14 +1,16 @@
 {
   "application": "MTZ Zbieracz logów Minecrafta",
-  "version": "0.3.0-rc.1",
+  "version": "0.3.0-rc.2",
   "releaseStage": "release-candidate",
   "releaseDate": "2026-11-06",
   "extensionVersion": "0.1.1",
   "target": "Windows 10/11 with Windows PowerShell 5.1",
-  "nativeWindowsValidation": "pending",
-  "publicHosting": "not-published",
+  "nativeWindowsValidation": "desktop-acceptance-pending",
+  "publicHosting": "github-release-not-published",
   "license": "MIT",
   "telemetry": false,
   "defaultCaptureMode": "Diagnostics",
-  "requiresApiKey": false
+  "requiresApiKey": false,
+  "windowsPowerShellValidation": "see-release-validation",
+  "antivirusResolutionVerified": false
 }

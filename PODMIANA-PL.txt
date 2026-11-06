@@ -1,0 +1,50 @@
+﻿MTZ — ZBIERACZ LOGÓW MINECRAFTA 0.3.0-rc.2
+Paczka do podmiany aplikacji • 6 listopada 2026
+
+PODMIANA W OBECNYM FOLDERZE APLIKACJI
+1. Zamknij okno zbieracza. Jeżeli trwa zbieranie, zaczekaj na zakończenie
+   albo użyj Anuluj i poczekaj, aż program zakończy porządkowanie.
+2. Rozpakuj cały ZIP. W środku jest folder Aplikacja i ta instrukcja.
+3. Naciśnij Win + R, wklej poniższe polecenie i zatwierdź:
+   explorer.exe "%LOCALAPPDATA%\MTZ-Logi\Aplikacja"
+4. Otwórz także folder Aplikacja z rozpakowanego ZIP-a.
+5. Skopiuj CAŁĄ JEGO ZAWARTOŚĆ do otwartego folderu z punktu 3:
+   wszystkie pliki oraz podfoldery bridge i rozszerzenie.
+   Zatwierdź zastąpienie plików o tych samych nazwach.
+   Plik MTZ-Logi.ps1 ma trafić bezpośrednio do istniejącego Aplikacja.
+   Nie twórz dodatkowego poziomu Aplikacja\Aplikacja.
+6. Pierwszy raz uruchom NOWY Uruchom-MTZ-Logi.cmd znajdujący się
+   w docelowym folderze %LOCALAPPDATA%\MTZ-Logi\Aplikacja.
+   Ten start przygotuje znany skrót na pulpicie. Stary plik VBS lub
+   przypięty wcześniej skrót nie jest automatycznie aktualizowany.
+7. W tytule okna powinno być MTZ — Zbieracz logów Minecrafta 0.3.0 RC2.
+   Nowy manifest diagnostyczny będzie miał collectorVersion 0.3.0-rc.2.
+
+CO Z USTAWIENIAMI I PACZKAMI
+Ustawienia są w %LOCALAPPDATA%\MTZ-Logi\ustawienia.json,
+a zebrane ZIP-y w %LOCALAPPDATA%\MTZ-Logi\Paczki.
+Te dane leżą obok Aplikacja. Kopiujesz wyłącznie zawartość Aplikacja.
+Nie zastępuj całego katalogu MTZ-Logi ani folderu Paczki.
+Ręczna podmiana plików nie tworzy automatycznej kopii poprzedniej aplikacji.
+
+AKTUALIZACJA Z KOPIĄ POPRZEDNIEJ APLIKACJI
+Zamiast ręcznego kopiowania możesz, po zamknięciu zbieracza, uruchomić
+Instaluj-MTZ-Logi.cmd z folderu Aplikacja w OSOBNO rozpakowanym ZIP-ie.
+Instalator sprawdzi kompletność plików, przygotuje i zweryfikuje nowy
+katalog, a poprzednią aplikację zachowa w MTZ-Logi\Kopie-aplikacji.
+Ustawienia i Paczki pozostaną w swoim dotychczasowym miejscu.
+Ta ścieżka działa także wtedy, gdy folder Aplikacja jeszcze nie istnieje.
+
+ZAKRES POPRAWKI I RAV
+RC2 zawiera poprawkę obsługi brakujących, pustych i niedostępnych plików
+instalatora oraz sprawdzenie przygotowanej kopii przed podmianą.
+Szeroki pasek postępu nadal pokazuje procent wykonanej pracy.
+
+To kandydat do wydania. Zgłoszenie RAV Endpoint Protection dotyczące
+wcześniejszego launchera pozostaje niewyjaśnione. Nie potwierdzono,
+że RAV zaakceptuje RC2. Jeżeli blokuje rozpakowanie lub podmianę,
+przerwij aktualizację i zachowaj komunikat oraz nazwę blokowanego pliku.
+Ta paczka nie zmienia ustawień ochrony ani zawartości kwarantanny.
+
+Szczegóły działania i weryfikacji są w Aplikacja\INSTRUKCJA-PL.txt
+oraz Aplikacja\WERYFIKACJA-PL.txt.

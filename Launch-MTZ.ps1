@@ -18,7 +18,7 @@ function Get-MtzLauncherFiles {
     )
     # Optional release documents are copied only when present in this distribution.
     if (-not [string]::IsNullOrWhiteSpace($SourceDirectory)) {
-        foreach ($relative in @('START-TUTAJ.txt', 'PRYWATNOSC-PL.txt', 'ZMIANY-0.3.0-rc.1.txt', 'VERSION.json')) {
+        foreach ($relative in @('START-TUTAJ.txt', 'PRYWATNOSC-PL.txt', 'ZMIANY-0.3.0-rc.2.txt', 'VERSION.json')) {
             if ([IO.File]::Exists((Join-Path $SourceDirectory $relative))) { $files += $relative }
         }
     }
