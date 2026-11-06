@@ -25,15 +25,27 @@ function Get-MtzLauncherFiles {
     return $files
 }
 
+function Assert-MtzLauncherFiles {
+    param([string]$Directory, [string[]]$Files)
+    foreach ($relative in $Files) {
+        $path = Join-Path $Directory $relative
+        $stream = $null
+        try {
+            if (-not [IO.File]::Exists($path)) { throw 'Brak zwyklego pliku.' }
+            $stream = [IO.File]::Open($path, [IO.FileMode]::Open, [IO.FileAccess]::Read, ([IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete))
+            if ($stream.ReadByte() -lt 0) { throw 'Plik jest pusty.' }
+        } catch {
+            $message = 'Wymagany plik jest niedostepny lub pusty: ' + $path + '. Paczka moze byc niekompletnie rozpakowana albo plik mogl zostac usuniety lub przeniesiony do kwarantanny przez ochrone. Sprawdz zawartosc paczki i historie ochrony. Operacja zostala przerwana.'
+            throw [IO.IOException]::new($message, $_.Exception)
+        } finally { if ($null -ne $stream) { $stream.Dispose() } }
+    }
+}
+
 function Install-MtzLauncherApplication {
     param([string]$SourceDirectory, [string]$DataDirectory, [string]$LauncherPath)
     # Validate the complete input before moving any installed application.
     $files = @(Get-MtzLauncherFiles -SourceDirectory $SourceDirectory)
-    foreach ($relative in $files) {
-        if (-not [IO.File]::Exists((Join-Path $SourceDirectory $relative))) {
-            throw ('Brakuje pliku ' + $relative + '. Podmien Uruchom-MTZ-Logi.cmd w folderze calej aplikacji i uruchom ponownie.')
-        }
-    }
+    Assert-MtzLauncherFiles -Directory $SourceDirectory -Files $files
     $installed = Join-Path $DataDirectory 'Aplikacja'
     $trim = [char[]]@([char]92, [char]47)
     if ([IO.Path]::GetFullPath($SourceDirectory).TrimEnd($trim).Equals(
@@ -67,6 +79,10 @@ function Install-MtzLauncherApplication {
         }
         $operation = 'kopiowanie launchera'; $currentPath = Join-Path $stage 'Uruchom-MTZ-Logi.cmd'
         [IO.File]::Copy($LauncherPath, $currentPath, $false)
+        # A copied file can disappear or become unavailable before commit.
+        # Validate the whole prepared directory before moving the old installation.
+        $operation = 'sprawdzanie kompletnej aplikacji'; $currentPath = $stage
+        Assert-MtzLauncherFiles -Directory $stage -Files ($files + @('Uruchom-MTZ-Logi.cmd'))
         $operation = 'zatwierdzanie instalacji'; $currentPath = $installed
         if ([IO.Directory]::Exists($installed)) {
             $backupRoot = Join-Path $DataDirectory 'Kopie-aplikacji'

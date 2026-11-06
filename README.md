@@ -16,6 +16,17 @@ Instrukcja: [INSTRUKCJA-PL.txt](INSTRUKCJA-PL.txt).
 Krótki start: [START-TUTAJ.txt](START-TUTAJ.txt).
 Zakres danych: [PRYWATNOSC-PL.txt](PRYWATNOSC-PL.txt).
 
+### Zgłoszony problem uruchamiania RC1
+
+Zgłoszono alarm ochrony „Suspicious PowerShell script activity” dotyczący
+`Launch-MTZ.ps1`, a następnie błąd instalatora wskazujący niedostępność tego
+pliku. Przyczyna alarmu pozostaje nierozstrzygnięta. Poprawka w tej gałęzi
+sprawdza kompletność plików i zatrzymuje niekompletną instalację; nie stanowi
+potwierdzenia usunięcia alarmu antywirusowego.
+
+Opis i potrzebne informacje diagnostyczne:
+[Problemy uruchamiania i komunikaty ochrony](docs/URUCHAMIANIE-I-OCHRONA.md).
+
 ## Funkcje
 
 - Szybka diagnostyka: ograniczone logi, raporty awarii i lista modów.

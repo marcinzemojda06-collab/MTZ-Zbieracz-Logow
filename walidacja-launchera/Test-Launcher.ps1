@@ -3,6 +3,7 @@
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
 $results = New-Object 'Collections.Generic.List[string]'
+$cmdPreflightRuns = 0
 function Assert-MtzTest([bool]$Condition, [string]$Name) {
     if (-not $Condition) { throw ('FAIL: ' + $Name) }
     $results.Add($Name)
@@ -20,6 +21,35 @@ Assert-MtzTest ($text.Contains('setlocal DisableDelayedExpansion')) 'CMD preserv
 Assert-MtzTest (-not ($text + $payload).Contains('Set-ExecutionPolicy')) 'No persistent execution-policy change'
 foreach ($node in $ast.FindAll({ param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] }, $false)) {
     . ([ScriptBlock]::Create($node.Extent.Text))
+}
+
+# CMD checks must cover the mandatory files before invoking PowerShell.
+$cmdEntries = @($cmd, (Join-Path $ApplicationDirectory 'Instaluj-MTZ-Logi.cmd'))
+foreach ($entry in $cmdEntries) {
+    $entryText = [IO.File]::ReadAllText($entry)
+    $processPosition = $entryText.IndexOf('powershell.exe', [StringComparison]::OrdinalIgnoreCase)
+    $listed = @([regex]::Matches($entryText, '(?m)^\s+"%~dp0([^"\r\n]+)"\r?$') | ForEach-Object { $_.Groups[1].Value.Replace('\', '/') })
+    $expectedFiles = @((Get-MtzLauncherFiles) + @('Uruchom-MTZ-Logi.cmd'))
+    Assert-MtzTest (@($expectedFiles | Where-Object { $listed -notcontains $_ }).Count -eq 0) ('CMD preflight includes every required file: ' + [IO.Path]::GetFileName($entry))
+    $guardPosition = $entryText.IndexOf('if not exist "%%~fF"', [StringComparison]::Ordinal)
+    Assert-MtzTest ($guardPosition -ge 0 -and $guardPosition -lt $processPosition -and $entryText.Contains('goto :mtz_missing_file') -and $entryText.Contains('exit /b 2')) ('CMD preflight stops before PowerShell on a missing file: ' + [IO.Path]::GetFileName($entry))
+}
+function Invoke-MtzFixtureProcess {
+    param([string]$FileName, [string]$Arguments, [string]$WorkingDirectory)
+    $start = New-Object Diagnostics.ProcessStartInfo
+    $start.FileName = $FileName; $start.Arguments = $Arguments; $start.WorkingDirectory = $WorkingDirectory
+    $start.UseShellExecute = $false; $start.CreateNoWindow = $true
+    $start.RedirectStandardInput = $true; $start.RedirectStandardOutput = $true; $start.RedirectStandardError = $true
+    $process = New-Object Diagnostics.Process
+    $process.StartInfo = $start
+    try {
+        [void]$process.Start()
+        $process.StandardInput.Close()
+        $output = $process.StandardOutput.ReadToEndAsync()
+        $errors = $process.StandardError.ReadToEndAsync()
+        if (-not $process.WaitForExit(15000)) { $process.Kill(); throw 'Fixture process did not finish within fifteen seconds.' }
+        return [pscustomobject]@{ ExitCode = $process.ExitCode; Output = $output.GetAwaiter().GetResult(); Errors = $errors.GetAwaiter().GetResult() }
+    } finally { $process.Dispose() }
 }
 
 # The fake saves JSON, not Windows .lnk bytes. It checks field handling and
@@ -96,6 +126,28 @@ Assert-MtzTest $failed 'Malformed PowerShell input rejects update'
 Assert-MtzTest ((Get-FileHash (Join-Path $app 'MTZ-Logi.ps1')).Hash -eq $mainHash) 'Malformed input leaves installed application intact'
 Assert-MtzTest (@(Get-ChildItem $data -Directory -Filter 'Aplikacja-nowa-*').Count -eq 0) 'Failed update cleans only its temporary staging directory'
 [IO.File]::WriteAllBytes($missing, $coreBytes)
+# Simulate loss of Launch-MTZ.ps1 after all copies but before the stage check.
+# This is a controlled filesystem fault, not antivirus/quarantine execution.
+$validatorDefinition = $ast.FindAll({ param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'Assert-MtzLauncherFiles' }, $false)[0].Extent.Text
+$script:originalStageValidator = (Get-Item function:Assert-MtzLauncherFiles).ScriptBlock
+$script:stageLossInjected = $false
+function Assert-MtzLauncherFiles {
+    param([string]$Directory, [string[]]$Files)
+    if ([IO.Path]::GetFileName($Directory).StartsWith('Aplikacja-nowa-', [StringComparison]::Ordinal)) {
+        [IO.File]::Delete((Join-Path $Directory 'Launch-MTZ.ps1'))
+        $script:stageLossInjected = $true
+    }
+    & $script:originalStageValidator -Directory $Directory -Files $Files
+}
+$beforeLostStageBackups = @(Get-ChildItem (Join-Path $data 'Kopie-aplikacji') -Directory).Count
+$stageFailure = ''
+try { Install-MtzLauncherApplication $source $data $cmd | Out-Null } catch { $stageFailure = $_.Exception.ToString() }
+finally { . ([ScriptBlock]::Create($validatorDefinition)) }
+Assert-MtzTest ($script:stageLossInjected -and $stageFailure.Contains('Launch-MTZ.ps1') -and $stageFailure.Contains('niekompletnie rozpakowana') -and $stageFailure.Contains('mogl zostac')) 'Lost stage launcher produces a specific, conditional availability error'
+Assert-MtzTest ((Get-FileHash (Join-Path $app 'MTZ-Logi.ps1')).Hash -eq $mainHash) 'Lost stage launcher never replaces the previous application'
+Assert-MtzTest (@(Get-ChildItem (Join-Path $data 'Kopie-aplikacji') -Directory).Count -eq $beforeLostStageBackups) 'Lost stage launcher is rejected before moving the old installation'
+Assert-MtzTest ([IO.File]::ReadAllText($settings) -eq '{"instance":"KEEP"}' -and [IO.File]::ReadAllText($archive) -eq 'KEEP ARCHIVE') 'Lost stage launcher preserves user settings and existing archives'
+Assert-MtzTest (@(Get-ChildItem $data -Directory -Filter 'Aplikacja-nowa-*').Count -eq 0) 'Lost stage launcher cleans only its failed staging directory'
 $backupCount = @(Get-ChildItem (Join-Path $data 'Kopie-aplikacji') -Directory).Count
 $app = Install-MtzLauncherApplication $app $data (Join-Path $app 'Uruchom-MTZ-Logi.cmd')
 Assert-MtzTest ((Get-FileHash (Join-Path $app 'MTZ-Logi.ps1')).Hash -eq $mainHash) 'Running replacement from installed directory preserves program'
@@ -168,6 +220,41 @@ Assert-MtzTest $observedWrapper.NoLaunch 'Installer preserves NoLaunch when dele
 & (Join-Path $wrapperRoot 'Instaluj-MTZ-Logi.ps1')
 $observedWrapper = [IO.File]::ReadAllText((Join-Path $wrapperRoot 'observed.json')) | ConvertFrom-Json
 Assert-MtzTest (-not $observedWrapper.NoLaunch) 'Normal installer delegates launch request'
+$wrapperLauncher = Join-Path $wrapperRoot 'Launch-MTZ.ps1'
+$wrapperLauncherBytes = [IO.File]::ReadAllBytes($wrapperLauncher)
+[IO.File]::Delete($wrapperLauncher)
+$wrapperMissingError = $null
+try { & (Join-Path $wrapperRoot 'Instaluj-MTZ-Logi.ps1') -NoLaunch } catch { $wrapperMissingError = $_ }
+Assert-MtzTest ($null -ne $wrapperMissingError -and $wrapperMissingError.Exception.Message.Contains('Launch-MTZ.ps1') -and $wrapperMissingError.Exception.Message.Contains('niekompletnie rozpakowana')) 'Missing launcher is explained by installer guard'
+Assert-MtzTest ($wrapperMissingError.Exception -isnot [Management.Automation.CommandNotFoundException]) 'Missing launcher never becomes an opaque command-not-found invocation'
+$runtimeLeaf = 'pwsh'
+if ($env:OS -eq 'Windows_NT') {
+    $runtimeLeaf = 'pwsh.exe'
+    if ($PSVersionTable.PSEdition -eq 'Desktop') { $runtimeLeaf = 'powershell.exe' }
+}
+$currentPowerShell = Join-Path $PSHOME $runtimeLeaf
+$wrapperFailureProcess = Invoke-MtzFixtureProcess -FileName $currentPowerShell -Arguments ('-NoLogo -NoProfile -NonInteractive -File "' + (Join-Path $wrapperRoot 'Instaluj-MTZ-Logi.ps1') + '" -NoLaunch') -WorkingDirectory $wrapperRoot
+Assert-MtzTest ($wrapperFailureProcess.ExitCode -ne 0 -and ($wrapperFailureProcess.Output + $wrapperFailureProcess.Errors).Contains('niekompletnie')) 'Direct installer process exits nonzero when launcher is missing'
+# Restore only our own test fixture, then simulate unreadable file access.
+[IO.File]::WriteAllBytes($wrapperLauncher, $wrapperLauncherBytes)
+$blockedLauncher = [IO.File]::Open($wrapperLauncher, 'Open', 'ReadWrite', 'None')
+try {
+    $blockedError = ''
+    try { & (Join-Path $wrapperRoot 'Instaluj-MTZ-Logi.ps1') -NoLaunch } catch { $blockedError = $_.Exception.Message }
+    Assert-MtzTest ($blockedError.Contains('Launch-MTZ.ps1') -and $blockedError.Contains('niedostepny') -and $blockedError.Contains('mogl zostac')) 'Unreadable launcher stops with a conditional availability message'
+} finally { $blockedLauncher.Dispose() }
+if ($env:OS -eq 'Windows_NT') {
+    foreach ($entry in $cmdEntries) {
+        $fixtureDirectory = Join-Path $root ('cmd-missing-' + [IO.Path]::GetFileNameWithoutExtension($entry))
+        [void][IO.Directory]::CreateDirectory($fixtureDirectory)
+        $fixtureCommand = Join-Path $fixtureDirectory ([IO.Path]::GetFileName($entry))
+        [IO.File]::Copy($entry, $fixtureCommand)
+        # Only the CMD exists: its first missing-file check must stop before PS.
+        $cmdResult = Invoke-MtzFixtureProcess -FileName $env:ComSpec -Arguments ('/d /c ""' + $fixtureCommand + '""') -WorkingDirectory $fixtureDirectory
+        Assert-MtzTest ($cmdResult.ExitCode -eq 2 -and ($cmdResult.Output + $cmdResult.Errors).Contains('Launch-MTZ.ps1')) ('Native CMD rejects missing launcher before PowerShell: ' + [IO.Path]::GetFileName($entry))
+        $cmdPreflightRuns++
+    }
+}
 [IO.File]::WriteAllText((Join-Path $wrapperRoot 'Launch-MTZ.ps1'), 'param([switch]$NoLaunch); throw "Fixture shared launcher failure"')
 $failed = $false
 try { & (Join-Path $wrapperRoot 'Instaluj-MTZ-Logi.ps1') -NoLaunch } catch { $failed = $true }
@@ -227,12 +314,14 @@ $report = [ordered]@{
     launcherRevision = '0.3.0-rc.1'; antivirusResolutionVerified = $false
     status = 'PASS'; checks = $results.Count; checksPassed = @($results)
     runtime = $PSVersionTable.PSVersion.ToString(); platform = [Environment]::OSVersion.Platform.ToString()
-    actualWindowsRun = $false; actualComShortcut = $false; emulatedShell = $true
-    boundary = 'Real filesystem and PowerShell parser; JSON shortcut fake, no Windows PowerShell 5.1/COM/Explorer/OneDrive runtime execution.'
+    actualWindowsRun = ($env:OS -eq 'Windows_NT'); actualComShortcut = $false; emulatedShell = $true
+    actualWindowsPowerShell51 = ($env:OS -eq 'Windows_NT' -and $PSVersionTable.PSVersion.Major -eq 5 -and $PSVersionTable.PSVersion.Minor -eq 1)
+    actualGuiRun = $false; actualAntivirusTest = $false; nativeCmdPreflightRuns = $cmdPreflightRuns
+    boundary = 'Real filesystem, locks and PowerShell interpreter; COM/GUI starts are simulated. Native CMD negative preflight cases run only on Windows. No real GUI, Explorer/OneDrive or antivirus validation.'
     launcherSha256 = (Get-FileHash $cmd -Algorithm SHA256).Hash.ToLowerInvariant()
     sharedLauncherSha256 = (Get-FileHash $launcherScript -Algorithm SHA256).Hash.ToLowerInvariant()
 }
 $report | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $OutputDirectory 'launch-results.json') -Encoding utf8
-Write-Output ('PASS: ' + $results.Count + ' checks; realFilesystem=true fakeCom=true actualWindows=false')
+Write-Output ('PASS: ' + $results.Count + ' checks; realFilesystem=true fakeCom=true actualWindows=' + ($env:OS -eq 'Windows_NT') + ' nativeCmdPreflightRuns=' + $cmdPreflightRuns)
 [IO.Directory]::Delete($root, $true)
 $env:SystemRoot = $previousSystemRoot
