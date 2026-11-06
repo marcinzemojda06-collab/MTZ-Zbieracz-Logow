@@ -138,7 +138,10 @@ function New-MtzLauncherShortcut {
         $link.WorkingDirectory = $ApplicationDirectory
         $link.Description = 'MTZ - Zbieracz logow Minecrafta'
         $link.WindowStyle = 1
-        $link.IconLocation = (Join-Path $env:SystemRoot 'System32\shell32.dll') + ',71'
+        $systemDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::System)
+        if (-not [string]::IsNullOrWhiteSpace($systemDirectory)) {
+            $link.IconLocation = (Join-Path $systemDirectory 'shell32.dll') + ',71'
+        }
         $link.Save()
         Release-MtzLauncherCom $link; $link = $null
         if (-not [IO.File]::Exists($temporary)) { throw 'Windows nie zapisal nowego skrotu.' }

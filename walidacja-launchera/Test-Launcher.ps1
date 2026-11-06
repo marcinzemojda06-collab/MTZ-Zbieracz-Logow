@@ -79,8 +79,6 @@ $root = Join-Path ([IO.Path]::GetTempPath()) ('MTZ-Launcher-Tests-' + [guid]::Ne
 $source = Join-Path $root "Zrodla ą & ! ' %folder%"
 $data = Join-Path $root "Dane ę & ! ' %folder%"
 $desktop = Join-Path $root "OneDrive/Pulpit ą & ! ' %folder%"
-$previousSystemRoot = $env:SystemRoot
-$env:SystemRoot = $root
 [void][IO.Directory]::CreateDirectory($source)
 [void][IO.Directory]::CreateDirectory($data)
 [void][IO.Directory]::CreateDirectory($desktop)
@@ -324,4 +322,3 @@ $report = [ordered]@{
 $report | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $OutputDirectory 'launch-results.json') -Encoding utf8
 Write-Output ('PASS: ' + $results.Count + ' checks; realFilesystem=true fakeCom=true actualWindows=' + ($env:OS -eq 'Windows_NT') + ' nativeCmdPreflightRuns=' + $cmdPreflightRuns)
 [IO.Directory]::Delete($root, $true)
-$env:SystemRoot = $previousSystemRoot
